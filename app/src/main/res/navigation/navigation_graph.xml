@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/navigation_graph"
+            app:startDestination="@id/action_movie">
+
+    <fragment android:id="@+id/action_movie"
+              android:name="com.yudikarma.moviecatalogsubmision2.ui.movie.FragmentListMovie"
+              android:label="List movie" tools:layout="@layout/fragment_fragment_list_movie">
+        <action android:id="@+id/action_fragmentListMovie_to_detailMovieFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"
+                app:destination="@id/detailMovieFragment"/>
+    </fragment>
+    <fragment android:id="@+id/action_tvshow"
+              android:name="com.yudikarma.moviecatalogsubmision2.ui.tvshow.ListTvShowFragment"
+              android:label="TV Show" tools:layout="@layout/fragment_list_tv_show">
+        <action android:id="@+id/action_action_tvshow_to_detailMovieFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"
+                app:destination="@id/detailMovieFragment"/>
+    </fragment>
+    <fragment android:id="@+id/detailMovieFragment"
+              android:name="com.yudikarma.moviecatalogsubmision2.ui.detail.DetailMovieFragment"
+              android:label="Detail Movie" tools:layout="@layout/fragment_detail_movie">
+        <argument
+                android:name="movie"
+                app:argType=".model.Movie"/>
+    </fragment>
+</navigation>

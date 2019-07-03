@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:orientation="vertical"
+                                                   android:layout_width="match_parent"
+                                                   app:contentPadding="8dp"
+                                                   android:layout_margin="2dp"
+                                                   android:elevation="6dp"
+                                                   app:cardCornerRadius="8dp"
+                                                   android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                       android:layout_height="wrap_content">
+        <ImageView android:layout_width="0dp"
+                   android:id="@+id/poster_movie"
+                   android:src="@drawable/poster_aquaman"
+                   app:layout_constraintDimensionRatio="H,1:1"
+                   android:layout_height="100dp" tools:ignore="MissingConstraints" android:layout_marginTop="8dp"
+                   app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                   android:layout_marginStart="0dp"/>
+        <androidx.appcompat.widget.AppCompatTextView android:layout_width="0dp"
+                                                     android:id="@+id/name_movie"
+                                                     android:layout_height="wrap_content"
+                                                     android:text="Movie name"
+                                                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                                     tools:ignore="MissingConstraints"
+                                                     app:layout_constraintTop_toTopOf="@id/poster_movie"
+                                                     app:layout_constraintEnd_toEndOf="parent"
+                                                     app:layout_constraintStart_toEndOf="@+id/poster_movie"
+                                                     android:layout_marginStart="8dp"/>
+        <androidx.appcompat.widget.AppCompatRatingBar android:layout_width="wrap_content"
+                                                      android:layout_height="wrap_content"
+                                                      android:id="@+id/rating_movie"
+                                                      style="?android:attr/ratingBarStyleSmall"
+                                                      app:layout_constraintTop_toBottomOf="@+id/poster_movie"
+                                                      android:rating="3"
+
+                                                      app:layout_constraintStart_toStartOf="@+id/poster_movie"
+                                                      android:layout_marginTop="8dp"
+                                                      android:layout_marginBottom="8dp"
+                                                      app:layout_constraintEnd_toEndOf="@+id/poster_movie"/>
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                  app:layout_constraintStart_toEndOf="@+id/poster_movie" android:layout_marginStart="8dp"
+                  android:id="@+id/rilis_movie"
+                  app:layout_constraintTop_toBottomOf="@id/name_movie"
+                  android:text="18 july 2019"
+                  android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                  android:layout_marginTop="4dp"
+                  tools:ignore="MissingConstraints" android:layout_marginEnd="8dp"
+                  app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView android:layout_width="0dp" android:layout_height="0dp"
+                  android:layout_marginTop="4dp"
+                  android:autoSizeMaxTextSize="18sp"
+                  android:autoSizeTextType="uniform"
+                  android:autoSizeMinTextSize="8sp"
+                  android:id="@+id/artist_movie"
+                  android:text="Mike Zeck Characters 3David Michelinie Characters Todd McFarlane Characters Ruben Fleischer Director Kelly Mrcel Screenplay Jeff Pinkner Screenplay Scott Rosenberg Screenplay"
+                  app:layout_constraintTop_toBottomOf="@id/rilis_movie"
+                  tools:ignore="MissingConstraints"
+                  app:layout_constraintStart_toEndOf="@+id/poster_movie" android:layout_marginStart="8dp"
+                  app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                  android:layout_marginBottom="8dp"
+                  app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>
