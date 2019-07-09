@@ -7,21 +7,51 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.yudikarma.moviecatalogsubmision2.R
 import com.yudikarma.moviecatalogsubmision2.adapter.ListTvShowAdapter
-import com.yudikarma.moviecatalogsubmision2.model.Movie
+import com.yudikarma.moviecatalogsubmision2.data.network.Status
+import com.yudikarma.moviecatalogsubmision2.data.network.model.ResultsItem
+import com.yudikarma.moviecatalogsubmision2.data.network.model.ResultsItemTvShow
+import com.yudikarma.moviecatalogsubmision2.ui.base.BaseFragment
 import com.yudikarma.moviecatalogsubmision2.ui.movie.FragmentListMovieDirections
+import com.yudikarma.moviecatalogsubmision2.ui.movie.ListMovieViewModel
 import kotlinx.android.synthetic.main.fragment_list_tv_show.view.*
+import org.jetbrains.anko.toast
 
 
-class ListTvShowFragment : Fragment(),ListTvShowAdapter.OnItemClickListener {
+class ListTvShowFragment : BaseFragment(),ListTvShowAdapter.OnItemClickListener {
+    override fun setupViewModel() {
+        model = ViewModelProviders.of(this,viewModelFactory).get(ListTvShowViewModel::class.java)
+
+        model.networkState.observe(this, Observer {
+            if (it.status == Status.FAILED){
+                context.toast("${it.msg}")
+            }
+        })
+
+        model.data.observe(this, Observer {
+            it.results?.let {
+                data.clear()
+                it?.forEach() {
+                    data.add(it)
+                    adapter.notifyDataSetChanged()
+                }
+            }
+        })
+
+    }
+
     lateinit var mView :View
     private lateinit var adapter : ListTvShowAdapter
-    private lateinit var data:MutableList<Movie>
+    private lateinit var data:MutableList<ResultsItemTvShow>
     private lateinit var mContext: Context
+    private lateinit var model: ListTvShowViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +62,8 @@ class ListTvShowFragment : Fragment(),ListTvShowAdapter.OnItemClickListener {
 
         setupRecycleView()
 
+        model.getListTVShow()
+
         return mView
     }
 
@@ -41,37 +73,12 @@ class ListTvShowFragment : Fragment(),ListTvShowAdapter.OnItemClickListener {
         mView.recycleview_listtvshow.layoutManager = LinearLayoutManager(mContext)
         mView.recycleview_listtvshow.adapter = adapter
 
-        setupDataDummy()
+
     }
 
-    private fun setupDataDummy() {
-        var arrayIdmovie = resources.getStringArray(R.array.id_tvshow)
-        var arrayposterMovie = resources.getStringArray(R.array.poster_tvshow)
-        var arrayNameMovie = resources.getStringArray(R.array.name_tvshow)
-        var arrayRilis_movie = resources.getStringArray(R.array.rilis_tvshow)
-        var arrayDescriptionMovie = resources.getStringArray(R.array.description_tvshow)
-        var arrayRating = resources.getStringArray(R.array.rating_tvshow)
+    override fun onItemDetailClick(v: View, position: Int, data: ResultsItemTvShow) {
 
-
-        arrayIdmovie.forEach {
-
-            data.add(
-                Movie(
-                    it,
-                    arrayposterMovie[it.toInt()],
-                    arrayNameMovie[it.toInt()],
-                    arrayRilis_movie[it.toInt()],
-                    arrayDescriptionMovie[it.toInt()],
-                    arrayRating[it.toInt()]
-                )
-            )
-        }
-        adapter.notifyDataSetChanged()
-    }
-
-    override fun onItemDetailClick(v: View, position: Int, data: Movie) {
-        val movie = Movie(data.id,data.poster,data.name,data.rilis,data.description,data.rating)
-        val action = ListTvShowFragmentDirections.actionActionTvshowToDetailMovieFragment(movie)
+        val action = ListTvShowFragmentDirections.actionActionTvshowToDetailTvShowFragment(data)
         Navigation.findNavController(v).navigate(action)
 
     }

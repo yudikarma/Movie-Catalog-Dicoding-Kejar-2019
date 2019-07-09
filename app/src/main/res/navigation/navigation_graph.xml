@@ -17,18 +17,25 @@
     <fragment android:id="@+id/action_tvshow"
               android:name="com.yudikarma.moviecatalogsubmision2.ui.tvshow.ListTvShowFragment"
               android:label="TV Show" tools:layout="@layout/fragment_list_tv_show">
-        <action android:id="@+id/action_action_tvshow_to_detailMovieFragment"
+        <action android:id="@+id/action_action_tvshow_to_detailTvShowFragment"
                 app:enterAnim="@anim/slide_in_right"
                 app:exitAnim="@anim/slide_out_left"
                 app:popEnterAnim="@anim/slide_in_left"
                 app:popExitAnim="@anim/slide_out_right"
-                app:destination="@id/detailMovieFragment"/>
+                app:destination="@id/detailTvShowFragment"/>
     </fragment>
     <fragment android:id="@+id/detailMovieFragment"
-              android:name="com.yudikarma.moviecatalogsubmision2.ui.detail.DetailMovieFragment"
+              android:name="com.yudikarma.moviecatalogsubmision2.ui.detail_movie.DetailMovieFragment"
               android:label="Detail Movie" tools:layout="@layout/fragment_detail_movie">
         <argument
                 android:name="movie"
-                app:argType=".model.Movie"/>
+                app:argType=".data.network.model.ResultsItem"/>
+    </fragment>
+    <fragment android:id="@+id/detailTvShowFragment"
+              android:name="com.yudikarma.moviecatalogsubmision2.ui.detail_tvshow.DetailTvShowFragment"
+              android:label="Detail TV Show">
+        <argument
+                android:name="tv_show"
+                app:argType=".data.network.model.ResultsItemTvShow"/>
     </fragment>
 </navigation>

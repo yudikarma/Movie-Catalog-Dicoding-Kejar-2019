@@ -1,6 +1,7 @@
 package com.yudikarma.moviecatalogsubmision2.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,10 +9,11 @@ import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.yudikarma.moviecatalogsubmision2.R
-import com.yudikarma.moviecatalogsubmision2.model.Movie
+import com.yudikarma.moviecatalogsubmision2.data.network.model.ResultsItemTvShow
 
-class ListTvShowAdapter(var context: Context, private val datas:MutableList<Movie>, val listener:OnItemClickListener):
+class ListTvShowAdapter(var context: Context, private val datas:MutableList<ResultsItemTvShow>, val listener:OnItemClickListener):
     RecyclerView.Adapter<ListTvShowAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_list_movie,parent,false)
@@ -45,16 +47,18 @@ class ListTvShowAdapter(var context: Context, private val datas:MutableList<Movi
 
         }
 
-        fun bind(item: Movie) {
+        fun bind(item: ResultsItemTvShow) {
             nameMovie.text = "${item.name}"
-            posterMovie.setImageResource(context.resources.getIdentifier("drawable/"+item.poster,null,context.packageName))
-            rilisMovie.text = "${item.rilis}"
-            sinopsisMovie.text = "${item.description}"
-            ratingMovie.rating = "${item.rating}".toFloat()
+            var urlImage = "https://image.tmdb.org/t/p"
+            Glide.with(context).load(urlImage+"/w500"+item.poster_path).into(posterMovie)
+            rilisMovie.text = "${item.first_air_date}"
+            sinopsisMovie.text = "${item.overview}"
+            val rating = item.vote_average - 5.0
+            ratingMovie.rating = rating.toFloat()
         }
     }
 
     interface OnItemClickListener {
-        fun onItemDetailClick(v: View, position: Int, data:Movie)
+        fun onItemDetailClick(v: View, position: Int, data:ResultsItemTvShow)
     }
 }

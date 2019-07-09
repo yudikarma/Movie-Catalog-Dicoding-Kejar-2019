@@ -22,7 +22,7 @@
     </string-array>
 
 
-<!--DATASET FOR MOVIE-->
+    <!--DATASET FOR MOVIE-->
     <string-array name="rating_movie">
         <item>3.9</item>
         <item>2.9</item>
@@ -37,16 +37,36 @@
 
     </string-array>
     <string-array name="description_movie">
-        <item>Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even…</item>
-        <item>Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even…</item>
-        <item>Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even…</item>
-        <item>Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even…</item>
-        <item>Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even…</item>
-        <item>Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even…</item>
-        <item>Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even…</item>
-        <item>Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even…</item>
-        <item>Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even…</item>
-        <item>Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even…</item>
+        <item>Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just
+            about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even…
+        </item>
+        <item>Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just
+            about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even…
+        </item>
+        <item>Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just
+            about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even…
+        </item>
+        <item>Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just
+            about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even…
+        </item>
+        <item>Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just
+            about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even…
+        </item>
+        <item>Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just
+            about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even…
+        </item>
+        <item>Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just
+            about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even…
+        </item>
+        <item>Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just
+            about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even…
+        </item>
+        <item>Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just
+            about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even…
+        </item>
+        <item>Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just
+            about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even…
+        </item>
     </string-array>
     <string-array name="rilis_movie">
         <item>October 3, 2018</item>
@@ -61,16 +81,16 @@
         <item>October 3, 2018</item>
     </string-array>
     <string-array name="name_movie">
-        <item>A Star Is Born </item>
-        <item>AQUA MAN </item>
-        <item>AVENGER INFINITY </item>
-        <item>BIRD BOX  </item>
-        <item>BOHEMIAN </item>
-        <item>Bumble Bee </item>
-        <item>Creed  </item>
+        <item>A Star Is Born</item>
+        <item>AQUA MAN</item>
+        <item>AVENGER INFINITY</item>
+        <item>BIRD BOX</item>
+        <item>BOHEMIAN</item>
+        <item>Bumble Bee</item>
+        <item>Creed</item>
         <item>Dead pool</item>
         <item>Dragon</item>
-        <item>Dragon Ball </item>
+        <item>Dragon Ball</item>
     </string-array>
     <string-array name="id_movie">
         <item>0</item>
@@ -115,16 +135,36 @@
 
     </string-array>
     <string-array name="description_tvshow">
-        <item>Set two generations before the destruction of the legendary Man of Steel’s home planet, Krypton follows Superman’s grandfather — whose House of El was ostracized and shamed — as he fights to redeem his family’s…</item>
-        <item>Set two generations before the destruction of the legendary Man of Steel’s home planet, Krypton follows Superman’s grandfather — whose House of El was ostracized and shamed — as he fights to redeem his family’s…</item>
-        <item>Set two generations before the destruction of the legendary Man of Steel’s home planet, Krypton follows Superman’s grandfather — whose House of El was ostracized and shamed — as he fights to redeem his family’s…</item>
-        <item>Set two generations before the destruction of the legendary Man of Steel’s home planet, Krypton follows Superman’s grandfather — whose House of El was ostracized and shamed — as he fights to redeem his family’s…</item>
-        <item>Set two generations before the destruction of the legendary Man of Steel’s home planet, Krypton follows Superman’s grandfather — whose House of El was ostracized and shamed — as he fights to redeem his family’s…</item>
-        <item>Set two generations before the destruction of the legendary Man of Steel’s home planet, Krypton follows Superman’s grandfather — whose House of El was ostracized and shamed — as he fights to redeem his family’s…</item>
-        <item>Set two generations before the destruction of the legendary Man of Steel’s home planet, Krypton follows Superman’s grandfather — whose House of El was ostracized and shamed — as he fights to redeem his family’s…</item>
-        <item>Set two generations before the destruction of the legendary Man of Steel’s home planet, Krypton follows Superman’s grandfather — whose House of El was ostracized and shamed — as he fights to redeem his family’s…</item>
-        <item>Set two generations before the destruction of the legendary Man of Steel’s home planet, Krypton follows Superman’s grandfather — whose House of El was ostracized and shamed — as he fights to redeem his family’s…</item>
-        <item>Set two generations before the destruction of the legendary Man of Steel’s home planet, Krypton follows Superman’s grandfather — whose House of El was ostracized and shamed — as he fights to redeem his family’s…</item>
+        <item>Set two generations before the destruction of the legendary Man of Steel’s home planet, Krypton follows
+            Superman’s grandfather — whose House of El was ostracized and shamed — as he fights to redeem his family’s…
+        </item>
+        <item>Set two generations before the destruction of the legendary Man of Steel’s home planet, Krypton follows
+            Superman’s grandfather — whose House of El was ostracized and shamed — as he fights to redeem his family’s…
+        </item>
+        <item>Set two generations before the destruction of the legendary Man of Steel’s home planet, Krypton follows
+            Superman’s grandfather — whose House of El was ostracized and shamed — as he fights to redeem his family’s…
+        </item>
+        <item>Set two generations before the destruction of the legendary Man of Steel’s home planet, Krypton follows
+            Superman’s grandfather — whose House of El was ostracized and shamed — as he fights to redeem his family’s…
+        </item>
+        <item>Set two generations before the destruction of the legendary Man of Steel’s home planet, Krypton follows
+            Superman’s grandfather — whose House of El was ostracized and shamed — as he fights to redeem his family’s…
+        </item>
+        <item>Set two generations before the destruction of the legendary Man of Steel’s home planet, Krypton follows
+            Superman’s grandfather — whose House of El was ostracized and shamed — as he fights to redeem his family’s…
+        </item>
+        <item>Set two generations before the destruction of the legendary Man of Steel’s home planet, Krypton follows
+            Superman’s grandfather — whose House of El was ostracized and shamed — as he fights to redeem his family’s…
+        </item>
+        <item>Set two generations before the destruction of the legendary Man of Steel’s home planet, Krypton follows
+            Superman’s grandfather — whose House of El was ostracized and shamed — as he fights to redeem his family’s…
+        </item>
+        <item>Set two generations before the destruction of the legendary Man of Steel’s home planet, Krypton follows
+            Superman’s grandfather — whose House of El was ostracized and shamed — as he fights to redeem his family’s…
+        </item>
+        <item>Set two generations before the destruction of the legendary Man of Steel’s home planet, Krypton follows
+            Superman’s grandfather — whose House of El was ostracized and shamed — as he fights to redeem his family’s…
+        </item>
 
     </string-array>
     <string-array name="rilis_tvshow">
@@ -141,16 +181,16 @@
 
     </string-array>
     <string-array name="name_tvshow">
-        <item>KRYPTON </item>
+        <item>KRYPTON</item>
         <item>LEGACIES</item>
-        <item>JOJOS BIZARRE ADVENTURE PART 5 GOLDEN WIND </item>
-        <item>FINAL SPACE  </item>
-        <item>TITANS </item>
-        <item>THE RESIDENT </item>
+        <item>JOJOS BIZARRE ADVENTURE PART 5 GOLDEN WIND</item>
+        <item>FINAL SPACE</item>
+        <item>TITANS</item>
+        <item>THE RESIDENT</item>
         <item>ERKENCI KUS</item>
         <item>GOBLIN SLAYER</item>
         <item>CHILLING ADVENTURE</item>
-        <item>KOBRA KAI </item>
+        <item>KOBRA KAI</item>
     </string-array>
     <string-array name="poster_tvshow">
         <item>krypton</item>
@@ -176,5 +216,8 @@
         <item>8</item>
         <item>9</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

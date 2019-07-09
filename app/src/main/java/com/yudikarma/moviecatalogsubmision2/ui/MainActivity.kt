@@ -11,15 +11,17 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.yudikarma.moviecatalogsubmision2.R
+import com.yudikarma.moviecatalogsubmision2.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
+
 
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+     super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         //set toolbar
@@ -58,4 +60,5 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(Settings.ACTION_LOCALE_SETTINGS);
         startActivity(intent)
     }
+
 }

@@ -7,22 +7,53 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.yudikarma.moviecatalogsubmision2.R
 import com.yudikarma.moviecatalogsubmision2.adapter.ListMovieAdapter
-import com.yudikarma.moviecatalogsubmision2.model.Movie
+import com.yudikarma.moviecatalogsubmision2.data.network.Status
+import com.yudikarma.moviecatalogsubmision2.data.network.model.Movie
+import com.yudikarma.moviecatalogsubmision2.data.network.model.ResultsItem
+import com.yudikarma.moviecatalogsubmision2.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_fragment_list_movie.view.*
+import org.jetbrains.anko.toast
 
 
-class FragmentListMovie : Fragment(), ListMovieAdapter.OnItemClickListener {
+class FragmentListMovie : BaseFragment(), ListMovieAdapter.OnItemClickListener {
+    override fun setupViewModel() {
+        model =ViewModelProviders.of(this,viewModelFactory).get(ListMovieViewModel::class.java)
+
+        model.networkState.observe(this, Observer {
+            if (it.status == Status.FAILED){
+                context.toast("${it.msg}")
+            }
+        })
+
+        model.data.observe(this, Observer {
+            it.results?.let {
+                data.clear()
+                it?.forEach() {
+                    data.add(it)
+                    adapter.notifyDataSetChanged()
+                }
+
+
+            }
+        })
+
+
+    }
 
 
     lateinit var mView :View
     private lateinit var adapter : ListMovieAdapter
-    private lateinit var data:MutableList<Movie>
+    private lateinit var data:MutableList<ResultsItem>
     private lateinit var mContext:Context
+    private lateinit var model: ListMovieViewModel
 
 
     override fun onCreateView(
@@ -35,6 +66,8 @@ class FragmentListMovie : Fragment(), ListMovieAdapter.OnItemClickListener {
 
         setupRecycleView()
 
+        model.getListMovie()
+
         return mView
     }
 
@@ -44,38 +77,17 @@ class FragmentListMovie : Fragment(), ListMovieAdapter.OnItemClickListener {
         mView.recycleview_listmovie.layoutManager = LinearLayoutManager(mContext)
         mView.recycleview_listmovie.adapter = adapter
 
-        setupDataDummy()
+
     }
 
-    private fun setupDataDummy() {
-        var arrayIdmovie = resources.getStringArray(R.array.id_movie)
-        var arrayposterMovie = resources.getStringArray(R.array.poster_movie)
-        var arrayNameMovie = resources.getStringArray(R.array.name_movie)
-        var arrayRilis_movie = resources.getStringArray(R.array.rilis_movie)
-        var arrayDescriptionMovie = resources.getStringArray(R.array.description_movie)
-        var arrayRating = resources.getStringArray(R.array.rating_movie)
 
 
-        arrayIdmovie.forEach {
-
-            data.add(
-                Movie(
-                    it,
-                    arrayposterMovie[it.toInt()],
-                    arrayNameMovie[it.toInt()],
-                    arrayRilis_movie[it.toInt()],
-                    arrayDescriptionMovie[it.toInt()],
-                    arrayRating[it.toInt()]
-                )
-            )
+    override fun onItemDetailClick(v: View, position: Int, data: ResultsItem) {
+        data?.let {
+            val action =FragmentListMovieDirections.actionFragmentListMovieToDetailMovieFragment(it)
+            Navigation.findNavController(v).navigate(action)
         }
-        adapter.notifyDataSetChanged()
-    }
 
-    override fun onItemDetailClick(v: View, position: Int, data: Movie) {
-        val movie = Movie(data.id,data.poster,data.name,data.rilis,data.description,data.rating)
-        val action =FragmentListMovieDirections.actionFragmentListMovieToDetailMovieFragment(movie)
-        Navigation.findNavController(v).navigate(action)
 
     }
 }
