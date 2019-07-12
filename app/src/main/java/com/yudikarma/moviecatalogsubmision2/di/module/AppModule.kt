@@ -3,9 +3,11 @@ package com.yudikarma.moviecatalogsubmision2.di.module
 import android.app.Application
 import android.content.ContentProviderClient
 import android.content.Context
+import androidx.room.Room
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.yudikarma.moviecatalogsubmision2.BuildConfig
 import com.yudikarma.moviecatalogsubmision2.data.Repository
+import com.yudikarma.moviecatalogsubmision2.data.local.database.AppDatabase
 import com.yudikarma.moviecatalogsubmision2.data.network.client.ApiHeader
 import com.yudikarma.moviecatalogsubmision2.data.network.client.ApiHelper
 import com.yudikarma.moviecatalogsubmision2.data.network.client.ApiNetwork
@@ -99,5 +101,13 @@ class AppModule {
 
     @Provides
     @Singleton
-    internal fun provideRepository(apiHelper: ApiHelper,context: Context): Repository = Repository(apiHelper,context)
+    internal fun provideRepository(apiHelper: ApiHelper,appDatabase: AppDatabase,context: Context): Repository = Repository(apiHelper,appDatabase,context)
+
+    @Provides
+    @Singleton
+    internal fun provideAppDatabase(context: Context): AppDatabase =
+        Room.databaseBuilder(context, AppDatabase::class.java, AppConstants.APP_DB_NAME)
+            .fallbackToDestructiveMigration()
+            .build()
+
 }

@@ -3,7 +3,6 @@ package com.yudikarma.moviecatalogsubmision2.ui.tvshow
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,18 +12,14 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.yudikarma.moviecatalogsubmision2.R
-import com.yudikarma.moviecatalogsubmision2.adapter.ListTvShowAdapter
 import com.yudikarma.moviecatalogsubmision2.data.network.Status
-import com.yudikarma.moviecatalogsubmision2.data.network.model.ResultsItem
 import com.yudikarma.moviecatalogsubmision2.data.network.model.ResultsItemTvShow
 import com.yudikarma.moviecatalogsubmision2.ui.base.BaseFragment
-import com.yudikarma.moviecatalogsubmision2.ui.movie.FragmentListMovieDirections
-import com.yudikarma.moviecatalogsubmision2.ui.movie.ListMovieViewModel
 import kotlinx.android.synthetic.main.fragment_list_tv_show.view.*
 import org.jetbrains.anko.toast
 
 
-class ListTvShowFragment : BaseFragment(),ListTvShowAdapter.OnItemClickListener {
+class ListTvShowFragment : BaseFragment(), ListTvShowAdapter.OnItemClickListener {
     override fun setupViewModel() {
         model = ViewModelProviders.of(this,viewModelFactory).get(ListTvShowViewModel::class.java)
 
@@ -32,12 +27,15 @@ class ListTvShowFragment : BaseFragment(),ListTvShowAdapter.OnItemClickListener 
             if (it.status == Status.FAILED){
                 context.toast("${it.msg}")
             }
+
+            if (it.status == Status.RUNNING) visibleShimmer() else unvVisibleShimmer()
+
         })
 
         model.data.observe(this, Observer {
             it.results?.let {
                 data.clear()
-                it?.forEach() {
+                it.forEach() {
                     data.add(it)
                     adapter.notifyDataSetChanged()
                 }
@@ -58,7 +56,7 @@ class ListTvShowFragment : BaseFragment(),ListTvShowAdapter.OnItemClickListener 
         savedInstanceState: Bundle?
     ): View? {
         mView = inflater.inflate(R.layout.fragment_list_tv_show, container, false)
-        mContext = context ?: return mView
+        mContext = context
 
         setupRecycleView()
 
@@ -69,11 +67,19 @@ class ListTvShowFragment : BaseFragment(),ListTvShowAdapter.OnItemClickListener 
 
     private fun setupRecycleView() {
         data = arrayListOf()
-        adapter = ListTvShowAdapter(mContext , data, this)
+        adapter = ListTvShowAdapter(mContext, data, this)
         mView.recycleview_listtvshow.layoutManager = LinearLayoutManager(mContext)
         mView.recycleview_listtvshow.adapter = adapter
 
 
+    }
+
+    fun unvVisibleShimmer(){
+        mView.container_shimmer.visibility = View.GONE
+    }
+
+    fun visibleShimmer(){
+        mView.container_shimmer.visibility = View.VISIBLE
     }
 
     override fun onItemDetailClick(v: View, position: Int, data: ResultsItemTvShow) {

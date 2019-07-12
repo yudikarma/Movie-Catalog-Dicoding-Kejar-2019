@@ -3,20 +3,16 @@ package com.yudikarma.moviecatalogsubmision2.ui.movie
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.yudikarma.moviecatalogsubmision2.R
-import com.yudikarma.moviecatalogsubmision2.adapter.ListMovieAdapter
 import com.yudikarma.moviecatalogsubmision2.data.network.Status
-import com.yudikarma.moviecatalogsubmision2.data.network.model.Movie
 import com.yudikarma.moviecatalogsubmision2.data.network.model.ResultsItem
 import com.yudikarma.moviecatalogsubmision2.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_fragment_list_movie.view.*
@@ -31,12 +27,14 @@ class FragmentListMovie : BaseFragment(), ListMovieAdapter.OnItemClickListener {
             if (it.status == Status.FAILED){
                 context.toast("${it.msg}")
             }
+            if (it.status == Status.RUNNING) visibleShimmer() else unvVisibleShimmer()
+
         })
 
         model.data.observe(this, Observer {
             it.results?.let {
                 data.clear()
-                it?.forEach() {
+                it.forEach() {
                     data.add(it)
                     adapter.notifyDataSetChanged()
                 }
@@ -62,7 +60,7 @@ class FragmentListMovie : BaseFragment(), ListMovieAdapter.OnItemClickListener {
     ): View? {
         // Inflate the layout for this fragment
         mView = inflater.inflate(R.layout.fragment_fragment_list_movie, container, false)
-        mContext = context ?: return mView
+        mContext = context
 
         setupRecycleView()
 
@@ -73,17 +71,25 @@ class FragmentListMovie : BaseFragment(), ListMovieAdapter.OnItemClickListener {
 
     private fun setupRecycleView() {
         data = arrayListOf()
-        adapter = ListMovieAdapter(mContext , data, this)
+        adapter = ListMovieAdapter(mContext, data, this)
         mView.recycleview_listmovie.layoutManager = LinearLayoutManager(mContext)
         mView.recycleview_listmovie.adapter = adapter
 
 
     }
 
+    fun unvVisibleShimmer(){
+        mView.container_shimmer.visibility = View.GONE
+    }
+
+    fun visibleShimmer(){
+        mView.container_shimmer.visibility = View.VISIBLE
+    }
+
 
 
     override fun onItemDetailClick(v: View, position: Int, data: ResultsItem) {
-        data?.let {
+        data.let {
             val action =FragmentListMovieDirections.actionFragmentListMovieToDetailMovieFragment(it)
             Navigation.findNavController(v).navigate(action)
         }

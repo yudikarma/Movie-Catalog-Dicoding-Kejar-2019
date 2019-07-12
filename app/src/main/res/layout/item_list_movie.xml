@@ -15,6 +15,7 @@
                    android:id="@+id/poster_movie"
                    android:src="@drawable/poster_aquaman"
                    app:layout_constraintDimensionRatio="H,1:1"
+                   android:contentDescription="@string/poster_movie"
                    android:layout_height="100dp" tools:ignore="MissingConstraints" android:layout_marginTop="8dp"
                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
                    android:layout_marginStart="0dp"/>
@@ -58,6 +59,12 @@
                   app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
                   android:layout_marginBottom="8dp"
                   app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/icon_delete"
+                   app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                   android:src="@drawable/ic_more_vert_white_24dp"
+                   android:visibility="invisible"
+                   android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -429,4 +429,6 @@
     <color name="yellow_A200">#ffffff00</color>
     <color name="yellow_A400">#ffffea00</color>
     <color name="yellow_A700">#ffffd600</color>
+    <color name="background_shimmer">#dddddd</color>
+
 </resources>

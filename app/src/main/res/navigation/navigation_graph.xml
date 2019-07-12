@@ -25,17 +25,20 @@
                 app:destination="@id/detailTvShowFragment"/>
     </fragment>
     <fragment android:id="@+id/detailMovieFragment"
-              android:name="com.yudikarma.moviecatalogsubmision2.ui.detail_movie.DetailMovieFragment"
+              android:name="com.yudikarma.moviecatalogsubmision2.ui.detailMovie.DetailMovieFragment"
               android:label="Detail Movie" tools:layout="@layout/fragment_detail_movie">
         <argument
                 android:name="movie"
                 app:argType=".data.network.model.ResultsItem"/>
     </fragment>
     <fragment android:id="@+id/detailTvShowFragment"
-              android:name="com.yudikarma.moviecatalogsubmision2.ui.detail_tvshow.DetailTvShowFragment"
+              android:name="com.yudikarma.moviecatalogsubmision2.ui.detailTvshow.DetailTvShowFragment"
               android:label="Detail TV Show">
         <argument
                 android:name="tv_show"
                 app:argType=".data.network.model.ResultsItemTvShow"/>
     </fragment>
+    <fragment android:id="@+id/action_favorite"
+              android:name="com.yudikarma.moviecatalogsubmision2.ui.favorite.FavoriteFragment"
+              android:label="fragment_favorite" tools:layout="@layout/fragment_favorite"/>
 </navigation>

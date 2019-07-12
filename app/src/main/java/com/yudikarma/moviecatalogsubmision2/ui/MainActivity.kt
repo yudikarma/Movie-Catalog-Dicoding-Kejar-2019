@@ -57,7 +57,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun goToSettingLanguage() {
-        val intent = Intent(Settings.ACTION_LOCALE_SETTINGS);
+        val intent = Intent(Settings.ACTION_LOCALE_SETTINGS)
         startActivity(intent)
     }
 

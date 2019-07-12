@@ -22,7 +22,7 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
@@ -106,5 +106,9 @@ dependencies {
 
     //hawk
     implementation "com.orhanobut:hawk:$rootProject.hawk"
+
+    // Room dependencies
+    implementation 'androidx.room:room-runtime:2.1.0'
+    kapt 'androidx.room:room-compiler:2.1.0'
 
 }
