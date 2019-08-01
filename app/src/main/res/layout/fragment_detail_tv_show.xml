@@ -173,18 +173,22 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton android:layout_width="wrap_content"
-                                                                           app:rippleColor="@color/blue_500"
-                                                                           app:maxImageSize="30dp"
-                                                                           app:layout_anchor="@id/appbar"
-                                                                           android:elevation="8dp"
-                                                                           app:layout_anchorGravity="bottom|end"
-                                                                           android:id="@+id/fab_addfav"
-                                                                           android:layout_marginEnd="16dp"
-                                                                           android:src="@drawable/ic_favorite_white_24dp"
-                                                                           app:backgroundTint="@color/pink_100"
-                                                                           android:layout_height="wrap_content"/>
-
-
+    <com.like.LikeButton android:layout_width="wrap_content"
+                         app:icon_size="50dp"
+                         app:rippleColor="@color/blue_500"
+                         app:icon_type="heart"
+                         app:circle_start_color="@color/colorPrimary"
+                         app:like_drawable="@drawable/ic_favorite_black_24dp"
+                         app:unlike_drawable="@drawable/ic_favorite_white_24dp"
+                         app:dots_primary_color="@color/colorAccent"
+                         app:dots_secondary_color="@color/colorPrimary"
+                         app:circle_end_color="@color/colorAccent"
+                         app:anim_scale_factor="2"
+                         app:layout_anchor="@id/appbar"
+                         android:elevation="8dp"
+                         android:id="@+id/fab_addfav"
+                         app:layout_anchorGravity="bottom|end"
+                         android:layout_marginEnd="16dp"
+                         android:layout_height="wrap_content"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

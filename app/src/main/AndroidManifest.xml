@@ -1,28 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
           package="com.yudikarma.moviecatalogsubmision2">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <permission android:name="com.yudikarma.moviecatalogsubmision2.data.local.provider.MovieProvider.READ_WRITE" android:protectionLevel="normal"/>
 
     <application
             android:name=".MovieCatalogApp"
-
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name="com.yudikarma.moviecatalogsubmision2.ui.settings_language.SettingsLanguageActivity">
+        <provider
+                android:name="com.yudikarma.moviecatalogsubmision2.data.local.provider.MovieProvider"
+                android:authorities="com.yudikarma.moviecatalogsubmision2.data.local.provider"
+                android:enabled="true"
+                android:exported="true" android:permission="com.yudikarma.moviecatalogsubmision2.data.local.provider.MovieProvider.READ_WRITE"/>
 
-        </activity>
-        <activity android:name=".ui.MainActivity">
+
+        <receiver android:name="com.yudikarma.moviecatalogsubmision2.feature.ui.widget.FavoriteMovieWIdget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+
+            <meta-data
+                    android:name="android.appwidget.provider"
+                    android:resource="@xml/favorite_movie_widget_info"/>
+        </receiver>
+
+        <activity android:name="com.yudikarma.moviecatalogsubmision2.feature.ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <service
+                android:name="com.yudikarma.mystackwidget.StackWidgetService"
+                android:permission="android.permission.BIND_REMOTEVIEWS"/>
     </application>
 
 </manifest>

@@ -19,5 +19,6 @@ data class TvShowEntity(@ColumnInfo(name = "first_air_date") var first_air_date:
                        @ColumnInfo(name = "vote_average") var vote_average:Double,
                         @ColumnInfo(name = "name")var name:String,
                        @ColumnInfo(name = "vote_count") var vote_count:Int,
-                       @PrimaryKey(autoGenerate = true)@ColumnInfo(name = "id") var id:Long = 0): Parcelable {
+                        @ColumnInfo(name = "getCountFavorite")var isFavorite:Boolean,
+                        @PrimaryKey @ColumnInfo(name = "id") var id:Long = 0): Parcelable {
 }

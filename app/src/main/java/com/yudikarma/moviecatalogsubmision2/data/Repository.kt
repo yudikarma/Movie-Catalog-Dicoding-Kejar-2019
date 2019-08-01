@@ -7,16 +7,23 @@ import com.yudikarma.moviecatalogsubmision2.data.local.database.AppDatabase
 import com.yudikarma.moviecatalogsubmision2.data.local.model.MovieEntity
 import com.yudikarma.moviecatalogsubmision2.data.local.model.TvShowEntity
 import com.yudikarma.moviecatalogsubmision2.data.network.client.ApiHelper
-import com.yudikarma.moviecatalogsubmision2.data.network.model.Movie
+import com.yudikarma.moviecatalogsubmision2.data.prefrence.AppPreferenceHelper
 import com.yudikarma.moviecatalogsubmision2.utils.ioThread
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 class Repository(private val apiHelper: ApiHelper,
                  private val appDatabase: AppDatabase,
+                 private val appPreferenceHelper: AppPreferenceHelper,
                  private val context: Context) {
 
-     fun getListMovies() = apiHelper.getListMovies(BuildConfig.API_KEY,BuildConfig.LANGUAGE_EN)
+    fun getListMovies() = apiHelper.getListMovies(BuildConfig.API_KEY,BuildConfig.LANGUAGE_EN)
 
      fun getListTvShow() = apiHelper.getListTvShow(BuildConfig.API_KEY,BuildConfig.LANGUAGE_EN)
+
+    fun searchMovie(query:String?) = apiHelper.searchMovie(BuildConfig.API_KEY,BuildConfig.LANGUAGE_EN,query)
+
+    fun searchTVShow(query: String?) = apiHelper.searchTVshow(BuildConfig.API_KEY,BuildConfig.LANGUAGE_EN,query)
 
     fun insertFavoriteMovie(movieEntity: MovieEntity, inserted:() -> Unit) = ioThread {
         appDatabase.movieDao().insertMovie(movieEntity)
@@ -25,10 +32,28 @@ class Repository(private val apiHelper: ApiHelper,
 
     fun getALlFavoriteMovie():LiveData<List<MovieEntity>> = appDatabase.movieDao().getAllMovie()
 
-    fun updateMovie(id:Long,vote_count:Int,popularity:Double, vote_average:Double,release_date:String, backdrop_path:String,poster_path:String,title:String,original_language:String,overview:String,
-                    update: () -> Unit) = ioThread {
-        appDatabase.movieDao().updateMovie(id,vote_count,popularity, vote_average,release_date, backdrop_path,poster_path,title,original_language,overview)
-        update()
+
+    suspend fun getFavoriteCount(id:Long, getfavorite: (size: Int) -> Unit): Int = suspendCoroutine{ continuation ->
+        ioThread {
+            val value = appDatabase.movieDao().getCountFavorite(id)
+            getfavorite(value)
+            continuation.resume(value)
+        }
+    }
+    suspend fun suspendGetALlFavoriteMovie(getfavorite: (data: List<MovieEntity>) -> Unit):List<MovieEntity> =suspendCoroutine { continuation ->
+        ioThread {
+            val value = appDatabase.movieDao().getAllMoviesuspend()
+            getfavorite(value)
+            continuation.resume(value)
+        }
+    }
+
+    suspend fun getFavoriteCountTVshow(id:Long, getfavorite: (size: Int) -> Unit): Int = suspendCoroutine{ continuation ->
+        ioThread {
+            val value = appDatabase.tvShowDao().getCountFavorite(id)
+            getfavorite(value)
+            continuation.resume(value)
+        }
     }
 
     fun deleteMovie(movieEntity: MovieEntity, delete: () -> Unit) = ioThread {
@@ -43,15 +68,17 @@ class Repository(private val apiHelper: ApiHelper,
     
     fun getALlFavoriteTvShow():LiveData<List<TvShowEntity>> = appDatabase.tvShowDao().getAllTVShow()
 
-    fun updateTVShow(id:Long,first_air_date:String,overview:String, original_language:String,poster_path:String, backdrop_path:String,original_name:String,popularity:Double,vote_average:Double,name:String,vote_count:String,
-                    update: () -> Unit) = ioThread {
-        appDatabase.tvShowDao().updateTvshow(id,first_air_date,overview, original_language,poster_path, backdrop_path,original_name,popularity,vote_average,name,vote_count)
-        update()
-    }
 
     fun deleteTVShow(tvShowEntity: TvShowEntity, delete: () -> Unit) = ioThread {
         appDatabase.tvShowDao().deleteTvshow(tvShowEntity)
         delete()
     }
 
+    fun setBoolean(key:String,value: Boolean?) = appPreferenceHelper.setBoolean(key,value)
+
+    fun getBoolean(key: String):Boolean = appPreferenceHelper.getBoolean(key)
+
+    fun listMovieUpcoming() = apiHelper.listMovieUpcoming(BuildConfig.API_KEY,BuildConfig.LANGUAGE_EN)
+
+    fun getInstanceAppDatabase() = appDatabase.getInstance(context)
 }

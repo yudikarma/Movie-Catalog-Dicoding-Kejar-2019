@@ -1,7 +1,6 @@
 package com.yudikarma.moviecatalogsubmision2.di.module
 
 import android.app.Application
-import android.content.ContentProviderClient
 import android.content.Context
 import androidx.room.Room
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -12,7 +11,10 @@ import com.yudikarma.moviecatalogsubmision2.data.network.client.ApiHeader
 import com.yudikarma.moviecatalogsubmision2.data.network.client.ApiHelper
 import com.yudikarma.moviecatalogsubmision2.data.network.client.ApiNetwork
 import com.yudikarma.moviecatalogsubmision2.data.network.client.AppApiHelper
+import com.yudikarma.moviecatalogsubmision2.data.prefrence.AppPreferenceHelper
+import com.yudikarma.moviecatalogsubmision2.data.prefrence.PreferenceHelper
 import com.yudikarma.moviecatalogsubmision2.di.ApiKeyInfo
+import com.yudikarma.moviecatalogsubmision2.di.PreferenceInfo
 import com.yudikarma.moviecatalogsubmision2.utils.AppConstants
 import dagger.Module
 import dagger.Provides
@@ -25,7 +27,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Named
 import javax.inject.Singleton
 
-@Module(includes = [ViewModelModule::class])
+@Module(includes = [ViewModelModule::class,WidgetsModule::class,ProviderModule::class])
 class AppModule {
 
     @Provides
@@ -101,7 +103,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    internal fun provideRepository(apiHelper: ApiHelper,appDatabase: AppDatabase,context: Context): Repository = Repository(apiHelper,appDatabase,context)
+    internal fun provideRepository(apiHelper: ApiHelper,appDatabase: AppDatabase,appPreferenceHelper: AppPreferenceHelper,context: Context): Repository = Repository(apiHelper,appDatabase,appPreferenceHelper,context)
 
     @Provides
     @Singleton
@@ -109,5 +111,26 @@ class AppModule {
         Room.databaseBuilder(context, AppDatabase::class.java, AppConstants.APP_DB_NAME)
             .fallbackToDestructiveMigration()
             .build()
+
+    @Provides
+    @PreferenceInfo
+    internal fun provideprefFileName(): String = AppConstants.PREF_NAME
+
+    @Provides
+    @Singleton
+    internal fun provideAppPrefHelper(): AppPreferenceHelper = AppPreferenceHelper("MovieCatalogPref")
+
+    @Provides
+    @Singleton
+    internal fun providePrefHelper(appPreferenceHelper: AppPreferenceHelper): PreferenceHelper = appPreferenceHelper
+
+
+
+
+
+
+
+
+
 
 }

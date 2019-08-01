@@ -6,5 +6,17 @@
     <string name="country">United Kingdom</string>
     <string name="setting_language">Atur Bahasa</string>
     <string name="poster_movie">Poster Film</string>
+    <string name="favorite">Favorite</string>
+    <string name="favorite_movie">Film </string>
+    <string name="favorite_tv_show">Serial TV </string>
+    <string name="delete">hapus</string>
+    <string name="listmovie">List Film</string>
+    <string name="tvshow">Serial TV</string>
+    <string name="detailmovie">Ringkasan Film</string>
+    <string name="detailtvshow">Ringkasan Serial TV</string>
+    <string name="not_found_movie">Maaf, film yang kamu inginkan tidak dapat ditemukan</string>
+    <string name="not_found_tvshow">maaf, Serial TV yang kamu inginkan tidak dapat ditemukan</string>
+    <string name="not_data_favorite_movie">Maaf, kamu belum menambahkan film apapun kedalam daftar favorite</string>
+    <string name="not_data_favorite_tvshow">Maaf, kamu belum menambahkan Serial TV apapun kedalam daftar favorite</string>
 
 </resources>

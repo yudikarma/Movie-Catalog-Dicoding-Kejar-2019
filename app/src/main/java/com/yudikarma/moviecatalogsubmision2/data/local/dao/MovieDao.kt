@@ -1,11 +1,9 @@
 package com.yudikarma.moviecatalogsubmision2.data.local.dao
 
+import android.database.Cursor
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
+import androidx.room.*
 import androidx.room.OnConflictStrategy.REPLACE
-import androidx.room.Query
 import com.yudikarma.moviecatalogsubmision2.data.local.model.MovieEntity
 
 @Dao
@@ -13,12 +11,37 @@ interface MovieDao {
     @Query("SELECT * FROM MOVIE")
     fun getAllMovie():LiveData<List<MovieEntity>>
 
+    @Query("SELECT * FROM MOVIE")
+    fun getAllMoviesuspend():List<MovieEntity>
+
+    @Query("SELECT * FROM MOVIE")
+    fun getAll():Cursor
+
+    @Query("SELECT * FROM MOVIE WHERE "+MovieEntity.idd+" = :id")
+    fun selectById(id: Long):Cursor
+
     @Insert(onConflict = REPLACE)
-    fun insertMovie(movieEntity: MovieEntity)
+    fun insertMovie(movieEntity: MovieEntity):Long
 
     @Delete
     fun deleteMovie(movieEntity: MovieEntity)
 
-    @Query("UPDATE MOVIE SET vote_count=:vote_count,popularity =:popularity,vote_average=:vote_average, release_date=:release_date, backdrop_path=:backdrop_path,poster_path=:poster_path, title=:title,original_language=:original_language,overview=:overview WHERE id=:id  ")
-    fun updateMovie(id:Long,vote_count:Int,popularity:Double, vote_average:Double,release_date:String, backdrop_path:String,poster_path:String,title:String,original_language:String,overview:String)
-}
+    @Query("DELETE FROM MOVIE WHERE id=:id")
+    fun deleteById(id: Long):Int
+
+    @Query("SELECT COUNT(*) FROM MOVIE where id=:id")
+    fun getCountFavorite(id:Long) :Int /*check is this id already add to favorite*/
+
+    @Update
+    fun updateMovie(movieEntity: MovieEntity):Int
+
+    @Query("SELECT COUNT(*) FROM MOVIE")
+    fun countMovie():Int
+
+    @Query("SELECT * FROM MOVIE")
+    fun selectAllMovieCursor():Cursor
+
+    /*@Delete
+    fun deleteMovieCursor(movieEntity: MovieEntity) :Cursor*/
+
+  }

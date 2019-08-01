@@ -18,6 +18,7 @@ buildscript {
         shimmer = '0.4.0'
         anko_commons = '0.10.4'
         hawk = '2.0.1'
+        work_version = "2.1.0"
     }
     repositories {
         google()

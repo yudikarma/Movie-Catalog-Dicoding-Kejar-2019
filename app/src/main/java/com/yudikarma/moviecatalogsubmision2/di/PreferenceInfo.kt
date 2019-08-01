@@ -1,7 +1,6 @@
 package com.yudikarma.moviecatalogsubmision2.di
 
-/*
 import javax.inject.Qualifier
 
 @Qualifier
-@Retention annotation class PreferenceInfo*/
+@Retention annotation class PreferenceInfo

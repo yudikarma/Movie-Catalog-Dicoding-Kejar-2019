@@ -1,5 +1,6 @@
 package com.yudikarma.moviecatalogsubmision2.data.local.database
 
+import android.content.Context
 import androidx.room.Database
 import androidx.room.DatabaseConfiguration
 import androidx.room.InvalidationTracker
@@ -9,6 +10,13 @@ import com.yudikarma.moviecatalogsubmision2.data.local.dao.MovieDao
 import com.yudikarma.moviecatalogsubmision2.data.local.dao.TVShowDao
 import com.yudikarma.moviecatalogsubmision2.data.local.model.MovieEntity
 import com.yudikarma.moviecatalogsubmision2.data.local.model.TvShowEntity
+import androidx.room.Room
+import android.R.attr.name
+import com.orhanobut.hawk.Hawk.count
+
+
+
+
 
 
 @Database(
@@ -19,4 +27,20 @@ abstract class AppDatabase:RoomDatabase() {
 
     abstract fun movieDao():MovieDao
     abstract fun tvShowDao():TVShowDao
+
+
+    private var sInstance: AppDatabase? = null
+    @Synchronized
+    fun getInstance(context: Context): AppDatabase {
+        if (sInstance == null) {
+            sInstance = Room
+                .databaseBuilder(context.getApplicationContext(), AppDatabase::class.java!!, "ex")
+                .build()
+        }
+        return sInstance!!
+    }
+
+
+
+
 }

@@ -5,40 +5,51 @@
             app:startDestination="@id/action_movie">
 
     <fragment android:id="@+id/action_movie"
-              android:name="com.yudikarma.moviecatalogsubmision2.ui.movie.FragmentListMovie"
-              android:label="List movie" tools:layout="@layout/fragment_fragment_list_movie">
+              android:name="com.yudikarma.moviecatalogsubmision2.feature.ui.movie.FragmentListMovie"
+              android:label="@string/listmovie" tools:layout="@layout/fragment_fragment_list_movie">
         <action android:id="@+id/action_fragmentListMovie_to_detailMovieFragment"
                 app:enterAnim="@anim/slide_in_right"
                 app:exitAnim="@anim/slide_out_left"
                 app:popEnterAnim="@anim/slide_in_left"
                 app:popExitAnim="@anim/slide_out_right"
                 app:destination="@id/detailMovieFragment"/>
+        <action android:id="@+id/action_action_movie_to_settingsFragment"  app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right" app:destination="@id/settingsFragment"/>
     </fragment>
     <fragment android:id="@+id/action_tvshow"
-              android:name="com.yudikarma.moviecatalogsubmision2.ui.tvshow.ListTvShowFragment"
-              android:label="TV Show" tools:layout="@layout/fragment_list_tv_show">
+              android:name="com.yudikarma.moviecatalogsubmision2.feature.ui.tvshow.ListTvShowFragment"
+              android:label="@string/tvshow" tools:layout="@layout/fragment_list_tv_show">
         <action android:id="@+id/action_action_tvshow_to_detailTvShowFragment"
                 app:enterAnim="@anim/slide_in_right"
                 app:exitAnim="@anim/slide_out_left"
                 app:popEnterAnim="@anim/slide_in_left"
                 app:popExitAnim="@anim/slide_out_right"
                 app:destination="@id/detailTvShowFragment"/>
+        <action android:id="@+id/action_action_tvshow_to_settingsFragment"  app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right" app:destination="@id/settingsFragment"/>
     </fragment>
     <fragment android:id="@+id/detailMovieFragment"
-              android:name="com.yudikarma.moviecatalogsubmision2.ui.detailMovie.DetailMovieFragment"
-              android:label="Detail Movie" tools:layout="@layout/fragment_detail_movie">
+              android:name="com.yudikarma.moviecatalogsubmision2.feature.ui.detailMovie.DetailMovieFragment"
+              android:label="@string/detailmovie" tools:layout="@layout/fragment_detail_movie">
         <argument
                 android:name="movie"
                 app:argType=".data.network.model.ResultsItem"/>
     </fragment>
     <fragment android:id="@+id/detailTvShowFragment"
-              android:name="com.yudikarma.moviecatalogsubmision2.ui.detailTvshow.DetailTvShowFragment"
-              android:label="Detail TV Show">
+              android:name="com.yudikarma.moviecatalogsubmision2.feature.ui.detailTvshow.DetailTvShowFragment"
+              android:label="@string/detailtvshow">
         <argument
                 android:name="tv_show"
                 app:argType=".data.network.model.ResultsItemTvShow"/>
     </fragment>
     <fragment android:id="@+id/action_favorite"
-              android:name="com.yudikarma.moviecatalogsubmision2.ui.favorite.FavoriteFragment"
-              android:label="fragment_favorite" tools:layout="@layout/fragment_favorite"/>
+              android:name="com.yudikarma.moviecatalogsubmision2.feature.ui.favorite.FavoriteFragment"
+              android:label="@string/favorite" tools:layout="@layout/fragment_favorite"/>
+    <fragment android:id="@+id/settingsFragment"
+              android:name="com.yudikarma.moviecatalogsubmision2.feature.ui.settings.SettingsFragment"
+              android:label="fragment_settings" tools:layout="@layout/fragment_settings"/>
 </navigation>

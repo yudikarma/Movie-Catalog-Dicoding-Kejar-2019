@@ -68,6 +68,7 @@ dependencies {
     implementation "com.google.dagger:dagger:$rootProject.dagger"
     implementation "com.google.dagger:dagger-android:$rootProject.dagger"
     implementation "com.google.dagger:dagger-android-support:$rootProject.dagger"
+    implementation 'androidx.preference:preference:1.1.0-rc01'
     kapt "com.google.dagger:dagger-compiler:$rootProject.dagger"
     kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger"
 
@@ -110,5 +111,18 @@ dependencies {
     // Room dependencies
     implementation 'androidx.room:room-runtime:2.1.0'
     kapt 'androidx.room:room-compiler:2.1.0'
+
+    //likes icon
+    implementation 'com.github.jd-alexander:LikeButton:0.2.3'
+
+    //material search view
+    implementation 'com.miguelcatalan:materialsearchview:1.4.0'
+
+    //workmanager
+    implementation "androidx.work:work-runtime-ktx:$rootProject.work_version"
+
+    //gson seriable
+        implementation 'com.google.code.gson:gson:2.8.5'
+
 
 }

@@ -6,12 +6,38 @@
     <string name="country">United Kingdom</string>
     <string name="setting_language">Setting Language</string>
     <string name="poster_movie">Poster Movie</string>
+    <string name="favorite">Favorite</string>
+    <string name="favorite_movie">Movie</string>
+    <string name="favorite_tv_show">TV Show</string>
+    <string name="delete">Delete</string>
+    <string name="listmovie">List movie</string>
+    <string name="tvshow">TV Show</string>
+    <string name="detailmovie">Detail Movie</string>
+    <string name="detailtvshow">Detail TV Show</string>
+    <string name="not_found_movie">Sorry, the movie you are looking for was not found</string>
+    <string name="not_found_tvshow">Sorry, the TV Show you are looking for was not found</string>
+    <string name="not_data_favorite_movie">Sorry, not yet add any movie to favorites</string>
+    <string name="not_data_favorite_tvshow">Sorry, not yet add any TV Show to favorites</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails</string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="favorite">Favorite</string>
-    <string name="favorite_movie">Favorite Movie</string>
-    <string name="favorite_tv_show">Favorite TV Show</string>
-    <string name="delete">Delete</string>
+
 
 </resources>
