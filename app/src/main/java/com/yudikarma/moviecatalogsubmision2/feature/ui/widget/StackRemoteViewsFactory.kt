@@ -17,6 +17,7 @@ import android.os.Binder
 import android.os.Handler
 import android.os.Looper
 import com.yudikarma.moviecatalogsubmision2.data.Repository
+import dagger.android.AndroidInjection
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -26,7 +27,7 @@ class StackRemoteViewsFactory: RemoteViewsService.RemoteViewsFactory {
     private var mContext: Context? = null
     private var mWidgetItems:ArrayList<MovieEntity> = arrayListOf()
     private var repository: Repository
-    private var idWidget:Int = 0
+    private var idWidget:Int? = null
 
 
     constructor(context: Context,intent: Intent,repository: Repository){
@@ -34,7 +35,7 @@ class StackRemoteViewsFactory: RemoteViewsService.RemoteViewsFactory {
         this.repository = repository
         this.idWidget = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,AppWidgetManager.INVALID_APPWIDGET_ID)
 
-        Log.d("widget path ","StackRemoteViewsFactory")
+        Log.d("widget path ",""+this.idWidget)
 
     }
 
@@ -87,12 +88,13 @@ class StackRemoteViewsFactory: RemoteViewsService.RemoteViewsFactory {
     }
 
     override fun getViewTypeCount(): Int {
-        return 0
+        return 1
     }
 
     override fun onDestroy() {}
 
-    override fun onCreate() {}
+    override fun onCreate() {
+    }
 
     override fun onDataSetChanged() {
 
@@ -103,6 +105,8 @@ class StackRemoteViewsFactory: RemoteViewsService.RemoteViewsFactory {
                     val idt:Long = Binder.clearCallingIdentity()
                     mWidgetItems.addAll(it)
                     Binder.restoreCallingIdentity(idt)
+
+                    Log.d("widget items",""+mWidgetItems)
                 })
             }
         }

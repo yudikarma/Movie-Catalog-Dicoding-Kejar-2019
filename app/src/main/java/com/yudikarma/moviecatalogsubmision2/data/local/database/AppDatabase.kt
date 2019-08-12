@@ -25,22 +25,36 @@ import com.orhanobut.hawk.Hawk.count
 )
 abstract class AppDatabase:RoomDatabase() {
 
+    @SuppressWarnings("WeakerAccess")
     abstract fun movieDao():MovieDao
     abstract fun tvShowDao():TVShowDao
 
 
-    private var sInstance: AppDatabase? = null
-    @Synchronized
+    /*@Synchronized
     fun getInstance(context: Context): AppDatabase {
         if (sInstance == null) {
             sInstance = Room
-                .databaseBuilder(context.getApplicationContext(), AppDatabase::class.java!!, "ex")
+                .databaseBuilder(context.getApplicationContext(), AppDatabase::class.java!!, "")
                 .build()
         }
         return sInstance!!
+    }*/
+
+    companion object{
+        private var sInstance: AppDatabase? = null
+
+        @Synchronized
+        fun getInstance(context: Context): AppDatabase {
+            if (sInstance == null) {
+                sInstance = Room
+                    .databaseBuilder(context.applicationContext, AppDatabase::class.java!!, "FavoriteMovie.db")
+                    .build()
+
+            }
+            return sInstance!!
+        }
+
     }
-
-
 
 
 }

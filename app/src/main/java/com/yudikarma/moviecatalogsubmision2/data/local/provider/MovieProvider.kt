@@ -16,139 +16,91 @@ import dagger.android.support.HasSupportFragmentInjector
 import java.lang.IllegalArgumentException
 import java.util.*
 import javax.inject.Inject
+import android.content.ContentUris
+import android.content.ContentValues
+import androidx.annotation.NonNull
+import android.content.UriMatcher
+import android.content.ContentProvider
+import android.annotation.SuppressLint
+import androidx.annotation.Nullable
 
+
+@SuppressLint("Registered")
 class MovieProvider @Inject constructor() : ContentProvider() {
 
-    @Inject
-    internal lateinit var repository: Repository
-
-    companion object {
-        const val AUTHORITY:String = "com.yudikarma.moviecatalogsubmision2.data.local.provider"
-        val URI_CHEESE:Uri = Uri.parse("content://" + AUTHORITY + "/" + MovieEntity.TABLE_NAME)
-        /** The match code for some items in the Cheese table.  */
-        private val CODE_CHEESE_DIR = 1
-
-        /** The match code for an item in the Cheese table.  */
-        private val CODE_CHEESE_ITEM = 2
-    }
-
-    var MATCHER:UriMatcher = UriMatcher(UriMatcher.NO_MATCH)
-
-    init {
-        MATCHER.addURI(AUTHORITY,MovieEntity.TABLE_NAME, CODE_CHEESE_DIR )
-        MATCHER.addURI(AUTHORITY,MovieEntity.TABLE_NAME+"/*", CODE_CHEESE_ITEM)
-
-    }
+    private var database: AppDatabase? = null
 
     override fun onCreate(): Boolean {
-         AndroidInjection.inject(this)
+        AndroidInjection.inject(this)
+        database = AppDatabase.getInstance(context)
         return true
     }
 
-
-
-
-
-
-    override fun getType(uri: Uri): String? {
-        when(MATCHER.match(uri)){
-            CODE_CHEESE_DIR -> return "vnd.android.cursor.dir/" + AUTHORITY + "." + MovieEntity.TABLE_NAME
-            CODE_CHEESE_ITEM -> return "vnd.android.cursor.item/" + AUTHORITY + "." + MovieEntity.TABLE_NAME
-            else -> throw IllegalArgumentException("Unknow Uri Type : "+uri)
-        }
-        return null
-    }
-
-    override fun insert(uri: Uri, values: ContentValues?): Uri? {
-        /*var uri:Uri? = null
-       when(MATCHER.match(uri)){
-           CODE_CHEESE_DIR -> {
-               context?.let {
-                   values?.let {values ->
-                       val id = repository.getInstanceAppDatabase().getInstance(it).movieDao().insertMovie(MovieEntity.fromContentValues(values))
-                       context.contentResolver.notifyChange(uri,null)
-                       uri = ContentUris.withAppendedId(uri,id)
-                   }
-               }
-           }
-
-            CODE_CHEESE_ITEM -> {
-                throw IllegalArgumentException("Invalid URI, cannot insert with ID: " + uri)
-            }
-            else ->
-                throw IllegalArgumentException("Unknow URI, cannot insert with ID: " + uri)
-        }
-        return uri*/
-        return null
-    }
-
+    @Nullable
     override fun query(
         uri: Uri,
-        projection: Array<String>?,
-        selection: String?,
-        selectionArgs: Array<String>?,
-        sortOrder: String?
+        @Nullable projection: Array<String>?,
+        @Nullable selection: String?,
+        @Nullable selectionArgs: Array<String>?,
+        @Nullable sortOrder: String?
     ): Cursor? {
-        val code  = MATCHER.match(uri)
-        if (code == CODE_CHEESE_DIR || code == CODE_CHEESE_ITEM){
-           if (context == null){
-               Log.e("Movie Provider","Context null")
-           }
-            var cursor:Cursor? = null
 
-            if (code == CODE_CHEESE_DIR){
-                cursor = repository.getInstanceAppDatabase().movieDao().getAll()
-            }else{
+        val code = MATCHER.match(uri)
+        if (code == CODE_DIR || code == CODE_ITEM) {
+            val context = context ?: return null
 
+            database = AppDatabase.getInstance(context)
+            var cursor: Cursor? = null
+
+            if (code == CODE_DIR) {
+                cursor = database!!.movieDao().getAll()
+                Log.i("test","cursor get")
+                if (cursor.moveToFirst()) {
+
+                   Log.i("data cursor",cursor.getString(cursor.getColumnIndexOrThrow(MovieEntity.titled)))
+                }
             }
-
-            cursor?.setNotificationUri(context.contentResolver,uri)
+            Objects.requireNonNull(cursor)?.setNotificationUri(context.contentResolver, uri)
             return cursor
-        }else{
-            throw IllegalArgumentException("Unknow Uris : "+uri)
+        } else {
+            throw IllegalArgumentException("Unknown URI: $uri")
         }
     }
 
-
-
-    override fun update(uri: Uri, values: ContentValues?, selection: String?, selectionArgs: Array<String>?): Int {
-        var count:Int = 0
-        /*when(MATCHER.match(uri)){
-            CODE_CHEESE_DIR -> throw IllegalArgumentException("Invalid URI, cannot update without ID "+uri)
-
-            CODE_CHEESE_ITEM -> {
-                if (context == null){
-                    return 0
-                }
-                val movieEntity = MovieEntity.fromContentValues(values!!)
-                movieEntity.id  = ContentUris.parseId(uri)
-                count = repository.getInstanceAppDatabase().getInstance(context).movieDao().updateMovie(movieEntity)
-                context.contentResolver.notifyChange(uri,null)
-            }
-            else -> throw IllegalArgumentException("Invalid URI, cannot update without ID "+uri)
-        }*/
-        return  count
+    @Nullable
+    override fun getType(uri: Uri): String? {
+        when (MATCHER.match(uri)) {
+            CODE_DIR -> return "vnd.android.cursor.dir/$AUTHORITY.Movie"
+            CODE_ITEM -> return "vnd.android.cursor.item/$AUTHORITY.Movie"
+            else -> throw IllegalArgumentException("Unknown URI: $uri")
+        }
     }
 
-    override fun delete(uri: Uri, selection: String?, selectionArgs: Array<String>?): Int {
-        var count:Int = 0
-        /*when(MATCHER.match(uri)){
-            CODE_CHEESE_DIR -> throw IllegalArgumentException("Invalid URI, cannot update without ID "+uri)
-
-            CODE_CHEESE_ITEM -> {
-                if (context == null){
-                    return 0
-                }
-                count = repository.getInstanceAppDatabase().getInstance(context).movieDao().deleteById(ContentUris.parseId(uri))
-                context.contentResolver.notifyChange(uri,null)
-            }
-        }*/
-        return  count
+    @Nullable
+    override fun insert(uri: Uri, @Nullable values: ContentValues?): Uri? {
+        return null
     }
 
-    fun deferInit(){
-       // AndroidInjection.inject(this)
-
+    override fun delete(uri: Uri, @Nullable selection: String?, @Nullable selectionArgs: Array<String>?): Int {
+        return 0
     }
 
+    override fun update(uri: Uri, @Nullable values: ContentValues?, @Nullable selection: String?, @Nullable selectionArgs: Array<String>?): Int {
+        return 0
+    }
+
+    companion object {
+        val AUTHORITY = "com.yudikarma.moviecatalogsubmision2.data.local.provider"
+        val URI_MOVIE = Uri.parse("content://$AUTHORITY/MOVIE")
+
+        private val CODE_DIR = 1
+        private val CODE_ITEM = 2
+
+        private val MATCHER = UriMatcher(UriMatcher.NO_MATCH)
+
+        init {
+            MATCHER.addURI(AUTHORITY, "MOVIE", CODE_DIR)
+            MATCHER.addURI(AUTHORITY, "MOVIE" + "/*", CODE_ITEM)
+        }
+    }
 }

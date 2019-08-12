@@ -1,6 +1,8 @@
 package com.yudikarma.moviecatalogsubmision2.feature.ui.detailMovie
 
 
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +18,7 @@ import com.yudikarma.moviecatalogsubmision2.R
 import com.yudikarma.moviecatalogsubmision2.data.local.model.MovieEntity
 import com.yudikarma.moviecatalogsubmision2.data.network.model.ResultsItem
 import com.yudikarma.moviecatalogsubmision2.feature.base.BaseFragment
+import com.yudikarma.moviecatalogsubmision2.feature.ui.widget.FavoriteMovieWIdget
 import kotlinx.android.synthetic.main.fragment_detail_movie.view.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -63,13 +66,14 @@ class DetailMovieFragment : BaseFragment() {
             override fun liked(likeButton: LikeButton?) {
                 viewModel.insertVaforiteMovie(movieEntity)
 
-                //updateWidgetFavoriteMovie()
+                updateWidgetFavoriteMovie()
                 context.toast("Succes add to Favorite Movie")
             }
 
             override fun unLiked(likeButton: LikeButton?) {
                 viewModel.deleteMovie(movieEntity)
 
+                updateWidgetFavoriteMovie()
                 context.toast("Succes Remove from Favorite Movie")
 
             }
@@ -78,6 +82,13 @@ class DetailMovieFragment : BaseFragment() {
 
 
         return mView
+    }
+
+    private fun updateWidgetFavoriteMovie() {
+        val appWidgetManager = AppWidgetManager.getInstance(context)
+        val thisWidget = ComponentName(context, FavoriteMovieWIdget::class.java!!)
+        val appWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget)
+        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.stack_view)
     }
 
     /*private fun updateWidgetFavoriteMovie() {

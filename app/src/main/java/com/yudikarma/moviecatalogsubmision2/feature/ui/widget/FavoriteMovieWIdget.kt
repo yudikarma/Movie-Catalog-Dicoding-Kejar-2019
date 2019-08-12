@@ -13,6 +13,9 @@ import com.yudikarma.moviecatalogsubmision2.data.Repository
 import com.yudikarma.mystackwidget.StackWidgetService
 import dagger.android.AndroidInjection
 import javax.inject.Inject
+import android.content.ComponentName
+
+
 
 
 /**
@@ -30,6 +33,7 @@ class FavoriteMovieWIdget : AppWidgetProvider() {
         // There may be multiple widgets active, so update all of them
         for (appWidgetId in appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId)
+            updateWidget(context)
         }
     }
 
@@ -43,17 +47,26 @@ class FavoriteMovieWIdget : AppWidgetProvider() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
         AndroidInjection.inject(this, context)
-        super.onReceive(context, intent)
 
         if (intent?.getAction() != null) {
             if (intent?.getAction().equals(TOAST_ACTION)) {
                 val viewIndex = intent.getIntExtra(EXTRA_ITEM, 0)
                 Toast.makeText(context, "Touched view $viewIndex", Toast.LENGTH_SHORT).show()
+
+                updateWidget(context)
             }
+
         }
+        super.onReceive(context, intent)
+
     }
 
-
+    private fun updateWidget(context: Context?) {
+        val appWidgetManager = AppWidgetManager.getInstance(context)
+        val thisWidget = ComponentName(context, FavoriteMovieWIdget::class.java!!)
+        val appWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget)
+        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.stack_view)
+    }
 
 
     companion object {
@@ -86,6 +99,7 @@ class FavoriteMovieWIdget : AppWidgetProvider() {
         val toastPendingIntent =
             PendingIntent.getBroadcast(context, appWidgetId, toastIntent, PendingIntent.FLAG_UPDATE_CURRENT)
         views.setPendingIntentTemplate(R.id.stack_view, toastPendingIntent)
+
         appWidgetManager.updateAppWidget(appWidgetId, views)
 
 

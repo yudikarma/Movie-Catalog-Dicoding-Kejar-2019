@@ -49,24 +49,23 @@ object Utils {
     }
 
 
-    fun sendNotificationUpcomingReminder(context: Context,data :List<ResultsItemMovieUpcoming>){
-       data.forEach {
+    fun sendNotificationUpcomingReminder(context: Context,poster_path:String?,title:String?,overview:String?){
            val intent = Intent(context,MainActivity::class.java)
            val pendingIntent = PendingIntent.getActivity(context, 1,intent,PendingIntent.FLAG_UPDATE_CURRENT)
            val notificationManager = context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
-           var bitmap : Bitmap? =null/* BitmapFactory.decodeResource(mContext?.getResources(), R.drawable.poster_aquaman)*/
+           /*var bitmap : Bitmap? =null*//* BitmapFactory.decodeResource(mContext?.getResources(), R.drawable.poster_aquaman)*//*
            try {
                val urlImage = "https://image.tmdb.org/t/p/w500"
                bitmap = Glide.with(context)
                    .asBitmap()
-                   .load(""+urlImage+it.poster_path)
+                   .load(""+urlImage+poster_path)
                    .submit()
                    .get()
            }catch (e : Exception){
 
 
-           }
+           }*/
            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O){
                val notificationChannel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME,NotificationManager.IMPORTANCE_DEFAULT)
                notificationChannel.enableVibration(true)
@@ -77,17 +76,17 @@ object Utils {
                notificationManager.createNotificationChannel(notificationChannel)
            }
            val notificationbuilder = NotificationCompat.Builder(context, CHANNEL_ID)
-               .setContentTitle("Rilis Today : ${it.title}")
-               .setContentText(""+it.overview)
+               .setContentTitle("Rilis Today : ${title}")
+               .setContentText(""+overview)
                .setAutoCancel(true)
                .setContentIntent(pendingIntent)
                .setSmallIcon(R.drawable.ic_movie_white_24dp)
-               .setLargeIcon(bitmap)
-               .setStyle(NotificationCompat.BigPictureStyle().bigPicture(bitmap))
+               //.setLargeIcon(bitmap)
+               //.setStyle(NotificationCompat.BigPictureStyle().bigPicture(bitmap))
 
            notificationManager.notify(1,notificationbuilder.build())
 
-       }
+
     }
 
     fun serializeToJson(arraylist: ArrayList<ResultsItemMovieUpcoming>): String {

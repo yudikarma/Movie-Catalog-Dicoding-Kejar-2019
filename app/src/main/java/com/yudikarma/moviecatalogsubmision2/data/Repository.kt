@@ -80,5 +80,5 @@ class Repository(private val apiHelper: ApiHelper,
 
     fun listMovieUpcoming() = apiHelper.listMovieUpcoming(BuildConfig.API_KEY,BuildConfig.LANGUAGE_EN)
 
-    fun getInstanceAppDatabase() = appDatabase.getInstance(context)
+    //fun getInstanceAppDatabase() = appDatabase.getInstance(context)
 }

@@ -121,8 +121,8 @@ class FragmentListMovie : BaseFragment(), ListMovieAdapter.OnItemClickListener, 
                 return true
             }
             else -> {
-            return super.onOptionsItemSelected(item)
-        }
+                return super.onOptionsItemSelected(item)
+            }
         }
     }
     override fun onQueryTextSubmit(query: String?): Boolean {
@@ -150,7 +150,7 @@ class FragmentListMovie : BaseFragment(), ListMovieAdapter.OnItemClickListener, 
 
         model.data.observe(this, Observer {
             it.results?.let {
-                   adapter.addDataToList(it)
+                adapter.addDataToList(it)
 
                 if (adapter.itemCount == 0) visibleNoData() else UnVisibleNoData()
 

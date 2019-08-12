@@ -14,7 +14,7 @@ interface MovieDao {
     @Query("SELECT * FROM MOVIE")
     fun getAllMoviesuspend():List<MovieEntity>
 
-    @Query("SELECT * FROM MOVIE")
+    @Query("SELECT * FROM " + MovieEntity.TABLE_NAME)
     fun getAll():Cursor
 
     @Query("SELECT * FROM MOVIE WHERE "+MovieEntity.idd+" = :id")

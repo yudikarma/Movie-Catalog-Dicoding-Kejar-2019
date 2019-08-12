@@ -4,6 +4,12 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <permission android:name="com.yudikarma.moviecatalogsubmision2.data.local.provider.MovieProvider.READ_WRITE" android:protectionLevel="normal"/>
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
             android:name=".MovieCatalogApp"
@@ -29,6 +35,16 @@
                     android:name="android.appwidget.provider"
                     android:resource="@xml/favorite_movie_widget_info"/>
         </receiver>
+
+        <receiver android:name=".feature.broadcastReceiver.ReminderDailyReceiver"
+                  android:enabled="true"
+                  android:process=":remote"
+                  android:exported="false"/>
+
+        <receiver android:name=".feature.broadcastReceiver.ReminderMovieReleaseReceiver"
+                  android:enabled="true"
+                  android:process=":remote"
+                  android:exported="false"/>
 
         <activity android:name="com.yudikarma.moviecatalogsubmision2.feature.ui.MainActivity">
             <intent-filter>

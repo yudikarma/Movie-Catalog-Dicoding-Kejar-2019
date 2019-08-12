@@ -42,7 +42,7 @@ class UpcomingMovieWorker(context: Context, workerParameters: WorkerParameters) 
             WorkManager.getInstance(applicationContext)
                 .enqueue(onetimeRequest)
 
-            Utils.sendNotificationUpcomingReminder(context, datas)
+            //Utils.sendNotificationUpcomingReminder(context, datas)
 
             return Result.success()
         } catch (throwable: Throwable) {

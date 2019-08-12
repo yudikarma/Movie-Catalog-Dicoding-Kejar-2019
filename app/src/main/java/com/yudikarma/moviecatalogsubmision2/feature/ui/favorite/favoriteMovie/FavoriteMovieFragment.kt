@@ -1,6 +1,8 @@
 package com.yudikarma.moviecatalogsubmision2.feature.ui.favorite.favoriteMovie
 
 
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.yudikarma.moviecatalogsubmision2.R
 import com.yudikarma.moviecatalogsubmision2.data.local.model.MovieEntity
 import com.yudikarma.moviecatalogsubmision2.feature.base.BaseFragment
+import com.yudikarma.moviecatalogsubmision2.feature.ui.widget.FavoriteMovieWIdget
+import com.yudikarma.moviecatalogsubmision2.utils.SpannedGridLayoutManager
 import kotlinx.android.synthetic.main.fragment_favorite_movie.view.*
 import kotlinx.android.synthetic.main.fragment_favorite_movie.view.container_shimmer
 import kotlinx.android.synthetic.main.fragment_favorite_movie.view.recycleview_listmovie
@@ -24,6 +28,8 @@ class FavoriteMovieFragment : BaseFragment(), FavoriteMovieAdapter.OnItemClickLi
         model.deleteMovie(movieEntity)
         adapter.notifyDataSetChanged()
         context.toast("Succes delete item")
+
+        updateWidgetFavoriteMovie()
 
     }
 
@@ -66,7 +72,9 @@ class FavoriteMovieFragment : BaseFragment(), FavoriteMovieAdapter.OnItemClickLi
     private fun setupRecycleView() {
         data  = arrayListOf()
         adapter = FavoriteMovieAdapter(mContext,data,this)
-        mView.recycleview_listmovie.layoutManager = LinearLayoutManager(mContext)
+
+        mView.recycleview_listmovie.setHasFixedSize(true)
+        mView.recycleview_listmovie.layoutManager = LinearLayoutManager(context)
         mView.recycleview_listmovie.adapter = adapter
 
     }
@@ -83,6 +91,13 @@ class FavoriteMovieFragment : BaseFragment(), FavoriteMovieAdapter.OnItemClickLi
 
     fun UnVisibleNoData(){
         mView.no_data_fvorite_movie.visibility = View.GONE
+    }
+
+    private fun updateWidgetFavoriteMovie() {
+        val appWidgetManager = AppWidgetManager.getInstance(context)
+        val thisWidget = ComponentName(context, FavoriteMovieWIdget::class.java!!)
+        val appWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget)
+        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.stack_view)
     }
 
 
