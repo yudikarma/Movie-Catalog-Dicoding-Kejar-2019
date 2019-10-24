@@ -1,8 +1,8 @@
-# Movie-Catalog-Dicoding-Kejar-2019
+### Movie-Catalog-Dicoding-Kejar-2019
 [![API](https://img.shields.io/badge/platform-Android-green.svg?style=flat)](https://developer.android.com/index.html)
 [![API](https://img.shields.io/badge/API-19%2B-brightgreen.svg?style=flat)](https://developer.android.com/index.html) 
 
-Zonapets is android Application social media for user who loves pets and want to share about her pets with other users and have fun with thats
+Movie-Catalog-Dicoding-Kejar-2019 is android Application for get Movie & TV Show from MovieDB
 
 
 ### Learn Refrence
