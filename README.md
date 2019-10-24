@@ -71,23 +71,13 @@ Zonapets uses a number of open source projects to work properly:
 * [Retrofit] /[OkHttp] - MA type-safe HTTP client for Android and Java
 * [Gson] - A Java serialization/deserialization library to convert Java Objects into JSON and back
 * [Dagger 2] - Dagger is a fully static, compile-time dependency injection framework for both Java and Android. It is an adaptation of an earlier version created by Square and now maintained by Google.
-* [Timber] - A logger with a small, extensible API which provides utility on top of Android's normal Log class.
-* [Crashlytics] - Firebase Crashlytics helps you track, prioritize, and fix stability issues that erode app quality, in realtime. Spend less time 
 * [Anko] - Pleasant Android application development
 * [Coroutines] - Library support for Kotlin coroutines with multiplatform support. This is a companion version for Kotlin
 * [Espresso] - for UI tests
-* [code picker] - Country Code Picker (CCP) is an android library which provides an easy way to search and select country or international phone code. Also supports Android EditText phone mask and international phone validation.
-* [android-cropview] - An Android library that lets you implement image crop. ImageCropView crops image by moving image under fixed crop area like instagram
-* [tap target view] - An implementation of tap targets from the Material Design guidelines for feature discovery
 * [shimmer] - An easy, flexible way to add a shimmering effect to any view in an Android app. 
 * [guava] - Google core libraries for Java
-* [pin entry edittext] - An EditText that looks like a pin entry field. It is highly customisable and even animated text.
-* [lottie] - Render After Effects animations natively on Android and iOS, Web, and React Native 
 * [eventbus] - Event bus for Android and Java that simplifies communication between Activities, Fragments, Threads, Services, etc. Less code, better quality. 
-* [compressor] - An android image compression library.
-* [hawk] - ✔️ Secure, simple key-value storage for Android
 * [material search view] - Cute library to implement SearchView in a Material Design Approach 
-* [circle imageview] - A circular ImageView for Android
 
 
 
