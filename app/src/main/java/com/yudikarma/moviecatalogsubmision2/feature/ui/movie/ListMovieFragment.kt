@@ -44,7 +44,9 @@ class FragmentListMovie : BaseFragment(), ListMovieAdapter.OnItemClickListener, 
 
         setupRecycleView()
 
-        model.getListMovie()
+        if (savedInstanceState == null){
+            model.getListMovie()
+        }
 
         return mView
     }

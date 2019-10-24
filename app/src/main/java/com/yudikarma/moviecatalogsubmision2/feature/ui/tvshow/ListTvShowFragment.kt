@@ -65,7 +65,9 @@ class ListTvShowFragment : BaseFragment(), ListTvShowAdapter.OnItemClickListener
 
         setupRecycleView()
 
-        model.getListTVShow()
+        if (savedInstanceState == null){
+            model.getListTVShow()
+        }
 
         return mView
     }
