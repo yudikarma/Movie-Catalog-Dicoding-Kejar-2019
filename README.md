@@ -4,6 +4,9 @@
 
 Movie-Catalog-Dicoding-Kejar-2019 is android Application for get Movie & TV Show from MovieDB
 
+visit Medium Stories -> 
+https://medium.com/@yudikarma/android-mvvm-with-jetpack-component-and-dagger2-dcfab5b29c22
+
 
 ### Learn Refrence
 > https://developer.android.com/jetpack
