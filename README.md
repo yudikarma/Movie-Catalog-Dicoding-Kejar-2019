@@ -7,6 +7,12 @@ Movie-Catalog-Dicoding-Kejar-2019 is android Application for get Movie & TV Show
 visit Medium Stories -> 
 https://medium.com/@yudikarma/android-mvvm-with-jetpack-component-and-dagger2-dcfab5b29c22
 
+### ScreenShot
+[![351a424e-69b8-419b-b10a-d1594ca99b52.jpg](https://i.postimg.cc/9X1Z0Fb8/351a424e-69b8-419b-b10a-d1594ca99b52.jpg)](https://postimg.cc/c6gr5WVw)
+[![cdf3606e-7589-450e-8d35-e7420da9cebc.jpg](https://i.postimg.cc/653RvJ19/cdf3606e-7589-450e-8d35-e7420da9cebc.jpg)](https://postimg.cc/Z0G0GgSg)
+[![d6258f7a-36c7-4348-9e6c-9f742c76cefb.jpg](https://i.postimg.cc/htQd28B6/d6258f7a-36c7-4348-9e6c-9f742c76cefb.jpg)](https://postimg.cc/HrHnxyj9)
+[![a7a1c452-453b-4a7a-a866-6f8af84a8892.jpg](https://i.postimg.cc/PrRDb3B1/a7a1c452-453b-4a7a-a866-6f8af84a8892.jpg)](https://postimg.cc/BX2t4gZv)
+
 
 ### Learn Refrence
 > https://developer.android.com/jetpack
