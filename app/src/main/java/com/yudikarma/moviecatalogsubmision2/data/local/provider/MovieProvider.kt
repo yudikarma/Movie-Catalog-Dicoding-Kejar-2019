@@ -9,7 +9,6 @@ import com.yudikarma.moviecatalogsubmision2.data.Repository
 import com.yudikarma.moviecatalogsubmision2.data.local.database.AppDatabase
 import com.yudikarma.moviecatalogsubmision2.data.local.model.MovieEntity
 import com.yudikarma.moviecatalogsubmision2.di.component.AppComponent
-import com.yudikarma.moviecatalogsubmision2.di.component.DaggerAppComponent
 import dagger.android.AndroidInjection
 import dagger.android.HasContentProviderInjector
 import dagger.android.support.HasSupportFragmentInjector

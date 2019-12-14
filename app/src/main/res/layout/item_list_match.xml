@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:orientation="vertical"
+                                                   android:layout_width="match_parent"
+                                                   app:contentPadding="8dp"
+                                                   android:layout_margin="2dp"
+                                                   android:elevation="6dp"
+                                                   android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <ImageView
+                android:id="@+id/logo_team_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:contentDescription="@string/poster_movie"
+                app:layout_constraintDimensionRatio="H,4:2"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/name_team_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Liverpool "
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintEnd_toEndOf="@+id/score_team_1"
+                app:layout_constraintStart_toStartOf="@+id/score_team_1"
+                app:layout_constraintTop_toBottomOf="@+id/score_team_1"
+                tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/name_team_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Man City"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintEnd_toEndOf="@+id/score_team_2"
+                app:layout_constraintStart_toStartOf="@+id/score_team_2"
+                app:layout_constraintTop_toBottomOf="@+id/score_team_2"
+                tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/score_team_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="90dp"
+                android:text="0"
+                android:layout_marginEnd="70dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintBaseline_toBaselineOf="@+id/between_score"
+                app:layout_constraintEnd_toStartOf="@+id/between_score"
+                tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/score_team_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:layout_marginStart="70dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintBaseline_toBaselineOf="@+id/between_score"
+                app:layout_constraintStart_toEndOf="@+id/between_score"
+                tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/between_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text=":"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintBottom_toBottomOf="@+id/logo_team_2"
+                app:layout_constraintEnd_toEndOf="@+id/rilis_match"
+                app:layout_constraintStart_toStartOf="@+id/rilis_match"
+                app:layout_constraintTop_toBottomOf="@+id/rilis_match"
+                tools:ignore="MissingConstraints" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/name_match"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Liverpool vs Man City"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+
+                app:layout_constraintEnd_toEndOf="@+id/logo_team_2"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="8dp"
+                tools:ignore="MissingConstraints" />
+
+        <TextView
+                android:id="@+id/rilis_match"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2019-11-10"
+                app:layout_constraintEnd_toEndOf="@+id/name_match"
+                app:layout_constraintStart_toStartOf="@+id/name_match"
+                app:layout_constraintTop_toBottomOf="@+id/name_match"
+                tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

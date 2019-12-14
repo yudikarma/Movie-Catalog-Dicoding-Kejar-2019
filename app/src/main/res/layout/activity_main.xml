@@ -6,43 +6,29 @@
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent">
 
-   <!-- <com.google.android.material.appbar.AppBarLayout android:background="@color/grey_5"
-                                                     android:id="@+id/appbar_main"
-                                                     android:layout_width="fill_parent"
-                                                     android:layout_height="wrap_content"
-                                                     app:elevation="0.0dip" tools:ignore="MissingConstraints">
-        <androidx.appcompat.widget.Toolbar android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                                           android:id="@+id/toolbar" android:layout_width="fill_parent"
-                                           android:layout_height="?actionBarSize"
-                                           app:title="Movie Catalog"
-                                           app:titleTextColor="@color/colorPrimary"
-                                           app:contentInsetStartWithNavigation="0.0dip"
-                                           app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                                           app:theme="@style/Toolbar.Light"/>
-    </com.google.android.material.appbar.AppBarLayout>-->
 
-    <fragment android:layout_width="0dp" android:layout_height="0dp"
-              android:name="androidx.navigation.fragment.NavHostFragment"
-              app:navGraph="@navigation/navigation_graph"
-              app:defaultNavHost="true"
-              tools:ignore="MissingConstraints"
-              app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
-              android:id="@+id/main_fragment"
-              app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-              android:layout_marginEnd="0dp" app:layout_constraintStart_toStartOf="parent"
-              android:layout_marginStart="0dp"></fragment>
-    <com.google.android.material.bottomnavigation.BottomNavigationView android:layout_width="match_parent"
-                                                                       app:elevation="3dp"
-                                                                       android:id="@+id/bottom_nav"
-                                                                       app:menu="@menu/menus"
-                                                                       android:layout_height="wrap_content"
-                                                                       android:background="@color/white_transparency"
-                                                                       tools:ignore="MissingConstraints"
-                                                                       android:layout_marginBottom="4dp"
-                                                                       app:layout_constraintBottom_toBottomOf="parent"
-                                                                       app:layout_constraintEnd_toEndOf="parent"
-                                                                       app:layout_constraintStart_toStartOf="parent">
 
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            tools:ignore="MissingConstraints"
+            android:id="@+id/container_fragment"
+            android:layout_height="match_parent">
+
+
+    <fragment
+            app:navGraph="@navigation/navigation_graph"
+            android:id="@+id/main_fragment"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+
+            />
+    </FrameLayout>
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

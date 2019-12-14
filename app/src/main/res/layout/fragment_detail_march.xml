@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:fillViewport="true"
+        xmlns:android="http://schemas.android.com/apk/res/android" >
+
+<androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/grey_20"
+        android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grey_20"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints">
+
+
+
+        <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:elevation="6dp"
+                android:orientation="vertical"
+                app:cardCornerRadius="10dp"
+                app:contentPadding="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <ImageView
+                        android:id="@+id/logo_team_1"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:contentDescription="@string/poster_movie"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="H,4:2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                <ImageView
+                        android:id="@+id/logo_team_home"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:contentDescription="@string/poster_movie"
+                        app:layout_constraintBottom_toBottomOf="@+id/between_score"
+                        app:layout_constraintDimensionRatio="H,1:1"
+                        app:layout_constraintEnd_toStartOf="@+id/score_team_1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/between_score"
+                        tools:ignore="MissingConstraints" />
+
+                <ImageView
+                        android:id="@+id/logo_team_away"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:contentDescription="@string/poster_movie"
+                        app:layout_constraintBottom_toBottomOf="@+id/score_team_2"
+                        app:layout_constraintDimensionRatio="H,1:1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/score_team_2"
+                        app:layout_constraintTop_toTopOf="@+id/score_team_2"
+                        tools:ignore="MissingConstraints" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/name_team_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Liverpool "
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/logo_team_home"
+                        app:layout_constraintStart_toStartOf="@+id/logo_team_home"
+                        app:layout_constraintTop_toBottomOf="@+id/logo_team_home"
+                        tools:ignore="MissingConstraints" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/name_team_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Man City"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/logo_team_away"
+                        app:layout_constraintStart_toStartOf="@+id/logo_team_away"
+                        app:layout_constraintTop_toBottomOf="@+id/logo_team_away"
+                        tools:ignore="MissingConstraints" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/score_team_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:text="0"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/between_score"
+                        app:layout_constraintEnd_toStartOf="@+id/between_score"
+                        tools:ignore="MissingConstraints" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/score_team_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:text="2"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/between_score"
+                        app:layout_constraintStart_toEndOf="@+id/between_score"
+                        tools:ignore="MissingConstraints" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/between_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <com.google.android.material.card.MaterialCardView
+            android:id="@+id/container_detail_match"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar"
+            tools:ignore="MissingConstraints">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/appCompatTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Match Info"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintEnd_toStartOf="@+id/appCompatTextView3"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/appCompatTextView2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/appCompatTextView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Home Team"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintEnd_toStartOf="@+id/appCompatTextView"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/appCompatTextView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Away Team"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/appCompatTextView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/name_team_2_detail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Liverpool "
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/appCompatTextView3"
+                    app:layout_constraintStart_toStartOf="@+id/appCompatTextView3"
+                    app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3"
+                    tools:ignore="MissingConstraints" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/name_team_1_detail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Liverpool "
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/appCompatTextView2"
+                    app:layout_constraintStart_toStartOf="@+id/appCompatTextView2"
+                    app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2"
+                    tools:ignore="MissingConstraints" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_shot_on_target"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Shot On Target "
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/name_team_2_detail"
+                    tools:ignore="MissingConstraints" />
+
+            <View
+                    android:id="@+id/pg_shot_on_target_home"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="3dp"
+                    android:background="@color/background_shimmer"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/pg_shot_on_target_away"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_shot_on_target" />
+
+            <View
+                    android:id="@+id/pg_shot_on_target_away"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="3dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@color/background_shimmer"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/pg_shot_on_target_home"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_shot_on_target" />
+
+            <TextView
+                    android:id="@+id/txt_value_shot_on_target_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="0"
+                    app:layout_constraintStart_toStartOf="@+id/pg_shot_on_target_home"
+                    app:layout_constraintTop_toBottomOf="@+id/pg_shot_on_target_home" />
+
+            <TextView
+                    android:id="@+id/txt_value_shot_on_target_away"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="0"
+                    app:layout_constraintEnd_toEndOf="@+id/pg_shot_on_target_away"
+                    app:layout_constraintTop_toBottomOf="@+id/pg_shot_on_target_away" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_formation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Formation "
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_value_shot_on_target_away"
+                    tools:ignore="MissingConstraints" />
+
+            <View
+                    android:id="@+id/view_formation"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="3dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/background_shimmer"
+                    android:progress="50"
+                    app:layout_constraintEnd_toEndOf="@+id/txt_formation"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_formation" />
+
+
+            <TextView
+                    android:id="@+id/txt_value_formation_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="2dp"
+                    android:text="4-2-2"
+                    app:layout_constraintStart_toStartOf="@+id/pg_shot_on_target_home"
+                    app:layout_constraintTop_toBottomOf="@+id/view_formation" />
+
+            <TextView
+                    android:id="@+id/txt_value_formation_away"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="4-3-2"
+                    app:layout_constraintEnd_toEndOf="@+id/pg_shot_on_target_away"
+                    app:layout_constraintTop_toBottomOf="@+id/view_formation" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container_goal_detail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="@+id/txt_formation"
+                    app:layout_constraintStart_toStartOf="@+id/txt_formation"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_value_formation_away">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_goal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Goal Detail "
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                <View
+                        android:id="@+id/view_goal"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/background_shimmer"
+                        android:progress="50"
+                        app:layout_constraintEnd_toEndOf="@+id/txt_goal"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_goal" />
+
+
+                <TextView
+                        android:id="@+id/txt_value_goal_home"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="69':Own  Jonjo Shelvey;61': Adam Lallana;51': Adam Lallana;33': Alberto Moreno;"
+                        app:layout_constraintEnd_toStartOf="@+id/txt_value_goal_away"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view_goal" />
+
+                <TextView
+                        android:id="@+id/txt_value_goal_away"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="52': Gylfi Sigurdsson;"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/txt_value_goal_home"
+                        app:layout_constraintTop_toBottomOf="@+id/view_goal" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container_yellow_card"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="@+id/txt_formation"
+                    app:layout_constraintStart_toStartOf="@+id/txt_formation"
+                    app:layout_constraintTop_toBottomOf="@+id/container_goal_detail">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_yellow_card"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Yellow Card "
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                <View
+                        android:id="@+id/view_yellow_card"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/background_shimmer"
+                        android:progress="50"
+                        app:layout_constraintEnd_toEndOf="@+id/txt_yellow_card"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_yellow_card" />
+
+
+                <TextView
+                        android:id="@+id/txt_value_yellow_card_home"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="69':Own  Jonjo Shelvey;61': Adam Lallana;51': Adam Lallana;33': Alberto Moreno;"
+                        app:layout_constraintEnd_toStartOf="@+id/txt_value_yellow_card_away"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view_yellow_card" />
+
+                <TextView
+                        android:id="@+id/txt_value_yellow_card_away"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="52': Gylfi Sigurdsson;"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/txt_value_yellow_card_home"
+                        app:layout_constraintTop_toBottomOf="@+id/view_yellow_card" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container_red_card"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="@+id/txt_formation"
+                    app:layout_constraintStart_toStartOf="@+id/txt_formation"
+                    app:layout_constraintTop_toBottomOf="@+id/container_yellow_card">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_red_card"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Red Card "
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                <View
+                        android:id="@+id/view_red_card"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/background_shimmer"
+                        android:progress="50"
+                        app:layout_constraintEnd_toEndOf="@+id/txt_red_card"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_red_card" />
+
+
+                <TextView
+                        android:id="@+id/txt_value_red_card_home"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="69':Own  Jonjo Shelvey;61': Adam Lallana;51': Adam Lallana;33': Alberto Moreno;"
+                        app:layout_constraintEnd_toStartOf="@+id/txt_value_red_card_away"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view_red_card" />
+
+                <TextView
+                        android:id="@+id/txt_value_red_card_away"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="52': Gylfi Sigurdsson;"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/txt_value_red_card_home"
+                        app:layout_constraintTop_toBottomOf="@+id/view_red_card" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

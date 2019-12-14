@@ -81,4 +81,19 @@ class Repository(private val apiHelper: ApiHelper,
     fun listMovieUpcoming() = apiHelper.listMovieUpcoming(BuildConfig.API_KEY,BuildConfig.LANGUAGE_EN)
 
     fun getInstanceAppDatabase() = appDatabase.getInstance(context)
+
+
+    //liga
+    fun getDetailLifa(id: String)  = apiHelper.getDetailLifa(id)
+
+    fun getLastMatch(id:String) = apiHelper.getLastMatch(id)
+
+    fun getNextMatch(id: String) = apiHelper.getNextMatch(id)
+
+    fun getMatchByName(keyword:String) = apiHelper.getMatchByName(keyword)
+
+    fun getDetailMatch(id:String) = apiHelper.getDetailMatch(id)
+
+    fun getTeamInfo(id: String) = apiHelper.getDetailTeamInfo(id)
+
 }

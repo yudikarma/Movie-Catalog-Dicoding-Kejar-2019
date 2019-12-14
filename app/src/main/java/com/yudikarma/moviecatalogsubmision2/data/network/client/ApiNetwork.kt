@@ -1,8 +1,6 @@
 package com.yudikarma.moviecatalogsubmision2.data.network.client
 
-import com.yudikarma.moviecatalogsubmision2.data.network.model.Movie
-import com.yudikarma.moviecatalogsubmision2.data.network.model.MovieUpcoming
-import com.yudikarma.moviecatalogsubmision2.data.network.model.TvShow
+import com.yudikarma.moviecatalogsubmision2.data.network.model.*
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.*
@@ -37,6 +35,43 @@ interface ApiNetwork {
         @Query("api_key")api_key:String?,
         @Query("language")language:String?
     ):Deferred<Response<MovieUpcoming>>
+
+
+    //get last 15 match
+    @GET("api/v1/json/1/eventspastleague.php?")
+    fun getLastMatch(
+        @Query("id")id: String
+    ):Deferred<Response<LastMatchModel>>
+
+    //get next match
+    @GET("api/v1/json/1/eventsnextleague.php?")
+    fun getNextMatch(
+        @Query("id")id: String
+    ):Deferred<Response<LastMatchModel>>
+
+    //get detail liga
+    @GET("api/v1/json/1/lookupleague.php?")
+    fun getDetailLiga(
+        @Query("id")id: String
+    ):Deferred<Response<LigaDetailModel>>
+
+    //search event by name
+    @GET("api/v1/json/1/searchevents.php?")
+    fun getEventByName(
+        @Query("e")keyword:String?
+    ):Deferred<Response<ListMatchByName>>
+
+    //get event detail
+    @GET("api/v1/json/1/lookupevent.php?")
+    fun getDetailMatch(
+        @Query("id") id:String
+    ):Deferred<Response<LastMatchModel>>
+
+    //get team info
+    @GET("api/v1/json/1/lookupteam.php?")
+    fun getTeamInfoDetail(
+        @Query("id") id:String
+    ):Deferred<Response<TeamDetailModel>>
 
 
 }

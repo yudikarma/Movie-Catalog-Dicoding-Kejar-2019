@@ -20,17 +20,13 @@
                 android:exported="true" android:permission="com.yudikarma.moviecatalogsubmision2.data.local.provider.MovieProvider.READ_WRITE"/>
 
 
-        <receiver android:name="com.yudikarma.moviecatalogsubmision2.feature.ui.widget.FavoriteMovieWIdget">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
-            </intent-filter>
 
-            <meta-data
-                    android:name="android.appwidget.provider"
-                    android:resource="@xml/favorite_movie_widget_info"/>
-        </receiver>
 
-        <activity android:name="com.yudikarma.moviecatalogsubmision2.feature.ui.MainActivity">
+        <activity android:name="com.yudikarma.moviecatalogsubmision2.feature.ui.match.MainActivity">
+            <nav-graph android:value="@navigation/navigation_graph" />
+        </activity>
+        <activity android:name=".feature.ui.Liga.activity.LigaDetailActivity"/>
+        <activity android:name=".feature.ui.Liga.activity.ListLigaActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -38,9 +34,7 @@
             </intent-filter>
         </activity>
 
-        <service
-                android:name="com.yudikarma.mystackwidget.StackWidgetService"
-                android:permission="android.permission.BIND_REMOTEVIEWS"/>
+
     </application>
 
 </manifest>

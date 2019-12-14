@@ -8,14 +8,13 @@ import android.content.Context
 import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Intent
 import android.graphics.Bitmap
-import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.yudikarma.moviecatalogsubmision2.R
 import com.yudikarma.moviecatalogsubmision2.data.network.model.ResultsItemMovieUpcoming
-import com.yudikarma.moviecatalogsubmision2.feature.ui.MainActivity
+import com.yudikarma.moviecatalogsubmision2.feature.ui.match.MainActivity
 import java.lang.Exception
 
 
@@ -25,7 +24,8 @@ object Utils {
     private val CHANNEL_NAME = "workmanager-reminder"
 
     fun sendNotificationDailyReminder(context: Context){
-        val intent = Intent(context,MainActivity::class.java)
+        val intent = Intent(context,
+            MainActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(context, 1,intent,PendingIntent.FLAG_UPDATE_CURRENT)
         val notificationManager = context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
@@ -51,7 +51,8 @@ object Utils {
 
     fun sendNotificationUpcomingReminder(context: Context,data :List<ResultsItemMovieUpcoming>){
        data.forEach {
-           val intent = Intent(context,MainActivity::class.java)
+           val intent = Intent(context,
+               MainActivity::class.java)
            val pendingIntent = PendingIntent.getActivity(context, 1,intent,PendingIntent.FLAG_UPDATE_CURRENT)
            val notificationManager = context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".feature.ui.match.lastMatch.ListLastMatchFragment">
+
+
+
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/recycleview_listmovie"
+            tools:listitem="@layout/item_list_match"
+            android:layout_marginTop="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <com.facebook.shimmer.ShimmerFrameLayout android:layout_width="match_parent"
+                                             android:id="@+id/container_shimmer"
+                                             android:layout_height="0dp"
+                                            android:visibility="visible"
+                                             app:layout_constraintTop_toTopOf="parent"
+                                             app:layout_constraintStart_toStartOf="parent"
+                                             app:layout_constraintEnd_toEndOf="parent"
+                                             app:layout_constraintBottom_toBottomOf="parent"
+    >
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent"
+                      android:layout_height="match_parent">
+            <include layout="@layout/item_list_match_shimmer"></include>
+            <include layout="@layout/item_list_match_shimmer"></include>
+            <include layout="@layout/item_list_match_shimmer"></include>
+            <include layout="@layout/item_list_match_shimmer"></include>
+            <include layout="@layout/item_list_match_shimmer"></include>
+            <include layout="@layout/item_list_match_shimmer"></include>
+            <include layout="@layout/item_list_match_shimmer"></include>
+            <include layout="@layout/item_list_match_shimmer"></include>
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+              android:id="@+id/no_data_movie"
+              android:text="@string/not_found_movie"
+              android:textAlignment="center"
+              android:visibility="gone"
+              android:textAppearance="@style/TextAppearance.AppCompat.Medium" tools:ignore="MissingConstraints"
+              app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
+              app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="32dp"
+              android:layout_marginStart="32dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

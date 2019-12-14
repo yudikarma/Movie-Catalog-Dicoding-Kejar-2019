@@ -1,13 +1,10 @@
 package com.yudikarma.moviecatalogsubmision2.di.builder
 
-import com.yudikarma.moviecatalogsubmision2.feature.ui.MainActivity
-import com.yudikarma.moviecatalogsubmision2.feature.ui.detailMovie.DetailMovieProviders
-import com.yudikarma.moviecatalogsubmision2.feature.ui.detailTvshow.DetailTvShowProviders
-import com.yudikarma.moviecatalogsubmision2.feature.ui.favorite.favoriteMovie.FavoriteMovieProviders
-import com.yudikarma.moviecatalogsubmision2.feature.ui.favorite.favoriteTvShow.FavoriteTvShowProviders
-import com.yudikarma.moviecatalogsubmision2.feature.ui.movie.ListMovieProviders
-import com.yudikarma.moviecatalogsubmision2.feature.ui.settings.SettingsProviders
-import com.yudikarma.moviecatalogsubmision2.feature.ui.tvshow.ListTvShowProviders
+import com.yudikarma.moviecatalogsubmision2.feature.ui.match.MainActivity
+import com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.DashboardProviders
+import com.yudikarma.moviecatalogsubmision2.feature.ui.match.detailMatch.DetailMatchProviders
+import com.yudikarma.moviecatalogsubmision2.feature.ui.match.lastMatch.ListLastMatchProviders
+import com.yudikarma.moviecatalogsubmision2.feature.ui.match.nextMatch.ListNextMatchProviders
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -15,14 +12,11 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(
-        modules = [ListMovieProviders::class,
-            ListTvShowProviders::class,
-            DetailTvShowProviders::class,
-            DetailMovieProviders::class,
-        FavoriteMovieProviders::class,
-        FavoriteTvShowProviders::class,
-        SettingsProviders::class]
+        modules = [ListLastMatchProviders::class,
+            ListNextMatchProviders::class,
+            DashboardProviders::class,
+            DetailMatchProviders::class]
     )
-    abstract fun bindMainActivity():MainActivity
+    abstract fun bindMainActivity(): MainActivity
 
 }
