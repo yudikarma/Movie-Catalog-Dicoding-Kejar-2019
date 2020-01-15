@@ -22,7 +22,7 @@
     <com.facebook.shimmer.ShimmerFrameLayout android:layout_width="match_parent"
                                              android:id="@+id/container_shimmer"
                                              android:layout_height="0dp"
-                                            android:visibility="visible"
+                                            android:visibility="invisible"
                                              app:layout_constraintTop_toTopOf="parent"
                                              app:layout_constraintStart_toStartOf="parent"
                                              app:layout_constraintEnd_toEndOf="parent"
