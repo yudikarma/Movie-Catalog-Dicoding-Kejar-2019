@@ -12,7 +12,11 @@ import com.yudikarma.moviecatalogsubmision2.data.network.Status
 import com.yudikarma.moviecatalogsubmision2.data.network.model.EventsItem
 import com.yudikarma.moviecatalogsubmision2.feature.base.BaseFragment
 import com.yudikarma.moviecatalogsubmision2.feature.ui.match.MainActivity
-import kotlinx.android.synthetic.main.fragment_fragment_list_match.*
+import com.yudikarma.moviecatalogsubmision2.utils.EspressoIdlingResource
+import kotlinx.android.synthetic.main.fragment_fragment_favorite_match.*
+import kotlinx.android.synthetic.main.fragment_fragment_favorite_match.container_shimmer
+import kotlinx.android.synthetic.main.fragment_fragment_favorite_match.no_data_movie
+import kotlinx.android.synthetic.main.fragment_fragment_next_match.*
 import org.jetbrains.anko.toast
 
 
@@ -32,7 +36,13 @@ class ListNextMatchFragment : BaseFragment(),
                 context.toast("${it.msg}")
             }
 
-            if (it.status == Status.RUNNING) visibleShimmer() else unvVisibleShimmer()
+            if (it.status == Status.RUNNING){
+                visibleShimmer()
+                EspressoIdlingResource.increment()
+            } else {
+                unvVisibleShimmer()
+                EspressoIdlingResource.decrement()
+            }
 
         })
 
@@ -57,30 +67,32 @@ class ListNextMatchFragment : BaseFragment(),
     }
     private lateinit var model: ListNextMatchViewModel
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (savedInstanceState == null){
+            val id = (context as? MainActivity)?.id
+            EspressoIdlingResource.increment()
+            model.getListNextMatch(id?:"4328")
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         setHasOptionsMenu(true);
-        return  inflater.inflate(R.layout.fragment_fragment_list_match, container, false)
+        return  inflater.inflate(R.layout.fragment_fragment_next_match, container, false)
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecycleView()
-
-        if (savedInstanceState == null){
-            val id = (context as? MainActivity)?.id
-            model.getListNextMatch(id?:"4328")
-        }
-
     }
 
     private fun setupRecycleView() {
 
-        with(recycleview_listmovie){
+        with(recycleview_next_match){
             layoutManager = LinearLayoutManager(context)
             adapter = rvAdapter
         }
@@ -111,13 +123,13 @@ class ListNextMatchFragment : BaseFragment(),
     }
 
     fun visibleRvView(){
-        recycleview_listmovie.visibility = View.VISIBLE
+        recycleview_next_match.visibility = View.VISIBLE
         unVisibleNoData()
         unvVisibleShimmer()
     }
 
     fun unVisibleRvView(){
-        recycleview_listmovie.visibility = View.GONE
+        recycleview_next_match.visibility = View.GONE
     }
 
 

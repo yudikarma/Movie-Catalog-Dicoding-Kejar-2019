@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import com.yudikarma.moviecatalogsubmision2.feature.ui.match.favoriteMatch.FavoriteMatchFragment
 import com.yudikarma.moviecatalogsubmision2.feature.ui.match.lastMatch.ListLastMatchFragment
 import com.yudikarma.moviecatalogsubmision2.feature.ui.match.nextMatch.ListNextMatchFragment
 
@@ -12,7 +13,8 @@ class DashboardAdapter internal constructor(fm: FragmentManager, val context: Co
 
     private val pages = listOf<Fragment>(
         ListLastMatchFragment(),
-        ListNextMatchFragment()
+        ListNextMatchFragment(),
+        FavoriteMatchFragment()
     )
 
     override fun getItem(position: Int): Fragment = pages[position]
@@ -22,7 +24,8 @@ class DashboardAdapter internal constructor(fm: FragmentManager, val context: Co
     override fun getPageTitle(position: Int): CharSequence? {
         return when(position){
             0 -> "Last Match"
-            else -> "Next Match"
+            1 -> "Next Match"
+            else -> "Favorite Match"
         }
     }
 }

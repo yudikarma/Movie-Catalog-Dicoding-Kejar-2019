@@ -3,12 +3,17 @@ package com.yudikarma.moviecatalogsubmision2.data
 import android.content.Context
 import androidx.lifecycle.LiveData
 import com.yudikarma.moviecatalogsubmision2.BuildConfig
+import com.yudikarma.moviecatalogsubmision2.data.Database.Favorite
+import com.yudikarma.moviecatalogsubmision2.data.Database.database
 import com.yudikarma.moviecatalogsubmision2.data.local.database.AppDatabase
 import com.yudikarma.moviecatalogsubmision2.data.local.model.MovieEntity
 import com.yudikarma.moviecatalogsubmision2.data.local.model.TvShowEntity
 import com.yudikarma.moviecatalogsubmision2.data.network.client.ApiHelper
 import com.yudikarma.moviecatalogsubmision2.data.prefrence.AppPreferenceHelper
 import com.yudikarma.moviecatalogsubmision2.utils.ioThread
+import org.jetbrains.anko.db.classParser
+import org.jetbrains.anko.db.select
+import java.sql.SQLException
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
@@ -95,5 +100,20 @@ class Repository(private val apiHelper: ApiHelper,
     fun getDetailMatch(id:String) = apiHelper.getDetailMatch(id)
 
     fun getTeamInfo(id: String) = apiHelper.getDetailTeamInfo(id)
+
+    fun getListFavoriteMatch():List<Favorite>{
+        var resultList = emptyList<Favorite>()
+        try {
+            context.database.use {
+                val result = select(Favorite.TABLE_FAVORITE)
+                resultList = result.parseList(classParser<Favorite>())
+
+            }
+        }catch (e : SQLException){
+            return resultList
+        }
+
+        return resultList
+    }
 
 }

@@ -14,7 +14,7 @@ import dagger.android.*
 import javax.inject.Inject
 
 
-class MovieCatalogApp : MultiDexApplication(),HasContentProviderInjector,HasActivityInjector, HasBroadcastReceiverInjector,HasServiceInjector,
+open class MovieCatalogApp : MultiDexApplication(),HasContentProviderInjector,HasActivityInjector, HasBroadcastReceiverInjector,HasServiceInjector,
     Configuration.Provider {
 
 

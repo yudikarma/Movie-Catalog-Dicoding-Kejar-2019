@@ -25,15 +25,20 @@
         <activity android:name="com.yudikarma.moviecatalogsubmision2.feature.ui.match.MainActivity">
             <nav-graph android:value="@navigation/navigation_graph" />
         </activity>
-        <activity android:name=".feature.ui.Liga.activity.LigaDetailActivity"/>
-        <activity android:name=".feature.ui.Liga.activity.ListLigaActivity">
+        <activity android:name=".feature.ui.liga.activity.LigaDetailActivity"/>
+        <activity android:name=".feature.ui.liga.activity.ListLigaActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
+        <uses-library android:name="android.test.runner"
+                android:required="false" />
+        <uses-library android:name="android.test.base"
+                android:required="false" />
+        <uses-library android:name="android.test.mock"
+                android:required="false" />
 
     </application>
 

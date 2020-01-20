@@ -21,6 +21,7 @@ import com.yudikarma.moviecatalogsubmision2.feature.base.BaseActivity
 import com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.DashboardFragment
 import com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.DashboardFragmentDirections
 import com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.SearchMatchRvAdapter
+import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast

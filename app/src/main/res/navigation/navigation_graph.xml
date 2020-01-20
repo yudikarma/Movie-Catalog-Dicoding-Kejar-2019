@@ -6,7 +6,7 @@
 
     <fragment android:id="@+id/action_movie"
               android:name="com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.DashboardFragment"
-              android:label="Football App" tools:layout="@layout/fragment_fragment_list_match">
+              android:label="Football App" tools:layout="@layout/fragment_fragment_favorite_match">
         <action android:id="@+id/action_fragmentListMovie_to_detailMovieFragment"
                 app:enterAnim="@anim/slide_in_right"
                 app:exitAnim="@anim/slide_out_left"

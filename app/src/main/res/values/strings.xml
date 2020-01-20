@@ -14,7 +14,7 @@
     <string name="tvshow">TV Show</string>
     <string name="detailmovie">Detail Movie</string>
     <string name="detailtvshow">Detail TV Show</string>
-    <string name="not_found_movie">Sorry, the movie you are looking for was not found</string>
+    <string name="not_found_movie">Sorry, the match you are looking for was not found</string>
     <string name="not_found_tvshow">Sorry, the TV Show you are looking for was not found</string>
     <string name="not_data_favorite_movie">Sorry, not yet add any movie to favorites</string>
     <string name="not_data_favorite_tvshow">Sorry, not yet add any TV Show to favorites</string>
@@ -128,7 +128,6 @@
                 Forty-nine clubs have competed since the inception of the Premier League in 1992. Six of them have won the title: Manchester United (13), Chelsea (5), Arsenal (3), Manchester City (3), Blackburn Rovers (1), and Leicester City (1). Following the 2003–04 season, Arsenal acquired the nickname "The Invincibles" as they became, and still remain, the only club to complete a Premier League campaign without losing a single game. The record of most points in a season is 100 by Manchester City in 2017–18.</item>
 
     </string-array>
-
 
 
     <array name="league_image">

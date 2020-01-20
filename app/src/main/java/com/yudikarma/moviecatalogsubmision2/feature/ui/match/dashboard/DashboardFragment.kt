@@ -20,6 +20,8 @@ import com.yudikarma.moviecatalogsubmision2.data.network.model.EventsItemMatchBy
 import com.yudikarma.moviecatalogsubmision2.data.network.model.LeaguesItem
 import com.yudikarma.moviecatalogsubmision2.feature.base.BaseFragment
 import com.yudikarma.moviecatalogsubmision2.feature.ui.match.MainActivity
+import com.yudikarma.moviecatalogsubmision2.utils.EspressoIdlingResource
+import com.yudikarma.moviecatalogsubmision2.utils.afterTextChangedDelayed
 import com.yudikarma.moviecatalogsubmision2.utils.loadImage
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import org.jetbrains.anko.support.v4.toast
@@ -74,6 +76,7 @@ MaterialSearchView.SearchViewListener {
 
         dashboardViewModel.data.observe(this, Observer {
             it?.leagues?.let {
+                // when other components finished their asynchronous tasks and marked the app as idle
                 setupViewDetailLiga(it.get(0))
             }
         })
@@ -98,7 +101,13 @@ MaterialSearchView.SearchViewListener {
             if (it.status == Status.FAILED){
                 toast("${it.msg}")
             }
-            if (it.status == Status.RUNNING) visibleShimmer() else unvVisibleShimmer()
+            if (it.status == Status.RUNNING){
+                visibleShimmer()
+                EspressoIdlingResource.increment()
+            } else {
+                unvVisibleShimmer()
+                EspressoIdlingResource.decrement()
+            }
 
         })
 
@@ -123,6 +132,11 @@ MaterialSearchView.SearchViewListener {
             childFragmentManager,
             context
         )
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
     }
 
 
@@ -158,10 +172,18 @@ MaterialSearchView.SearchViewListener {
             setupWithViewPager(viewpager)
         }
 
+        search_view.afterTextChangedDelayed{
+            dashboardViewModel.getMatchByName(it)
+        }
+
+
       if (savedInstanceState == null){
             val id = (context as? MainActivity)?.id
+           EspressoIdlingResource.increment()
             dashboardViewModel.getDetailLiga(id?:"4328")
         }
+
+
     }
 
     private fun setSupportActionbar() {
@@ -169,17 +191,17 @@ MaterialSearchView.SearchViewListener {
         toolbar.inflateMenu(R.menu.menus)
     }
     private fun setupSeachView() {
-        search_view.setVoiceSearch(false)
-        search_view.setEllipsize(true)
-        search_view.setOnQueryTextListener(this)
-        search_view.setOnSearchViewListener(this)
+        //search_view.setVoiceSearch(false)
+        //search_view.setEllipsize(true)
+        //search_view.setOnQueryTextListener(this)
+        //search_view.setOnSearchViewListener(this)
 
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menus,menu)
         val item=menu .findItem(R.id.action_search)
-        search_view.setMenuItem(item)
+       // search_view.setMenuItem(item)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -211,8 +233,9 @@ MaterialSearchView.SearchViewListener {
 
 
     private fun getMatchByName(keyword:String){
+        EspressoIdlingResource.increment()
         dashboardViewModel.getMatchByName(keyword)
-        visibleShimmer()
+
 
     }
 

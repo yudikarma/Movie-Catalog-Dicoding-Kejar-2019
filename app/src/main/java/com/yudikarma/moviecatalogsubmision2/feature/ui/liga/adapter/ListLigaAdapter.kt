@@ -1,4 +1,4 @@
-package com.yudikarma.moviecatalogsubmision2.feature.ui.Liga.adapter
+package com.yudikarma.moviecatalogsubmision2.feature.ui.liga.adapter
 
 
 import android.view.View
@@ -8,8 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.yudikarma.moviecatalogsubmision2.R
-import com.yudikarma.moviecatalogsubmision2.feature.ui.Liga.model.ListLigaModel
-import com.yudikarma.moviecatalogsubmision2.feature.ui.Liga.ui.ListLigaUI
+import com.yudikarma.moviecatalogsubmision2.feature.ui.liga.model.ListLigaModel
+import com.yudikarma.moviecatalogsubmision2.feature.ui.liga.ui.ListLigaUI
 import org.jetbrains.anko.AnkoContext
 
 class ListLigaAdapter (private val items : List<ListLigaModel>, var listener: (ListLigaModel) -> Unit) :

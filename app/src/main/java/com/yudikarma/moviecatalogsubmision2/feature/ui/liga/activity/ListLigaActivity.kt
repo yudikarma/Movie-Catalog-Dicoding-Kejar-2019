@@ -1,4 +1,4 @@
-package com.yudikarma.moviecatalogsubmision2.feature.ui.Liga.activity
+package com.yudikarma.moviecatalogsubmision2.feature.ui.liga.activity
 
 
 import android.annotation.SuppressLint
@@ -6,9 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yudikarma.moviecatalogsubmision2.R
-import com.yudikarma.moviecatalogsubmision2.feature.ui.Liga.adapter.ListLigaAdapter
-import com.yudikarma.moviecatalogsubmision2.feature.ui.Liga.model.ListLigaModel
-import com.yudikarma.moviecatalogsubmision2.feature.ui.match.MainActivity
+import com.yudikarma.moviecatalogsubmision2.feature.ui.liga.adapter.ListLigaAdapter
+import com.yudikarma.moviecatalogsubmision2.feature.ui.liga.model.ListLigaModel
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 

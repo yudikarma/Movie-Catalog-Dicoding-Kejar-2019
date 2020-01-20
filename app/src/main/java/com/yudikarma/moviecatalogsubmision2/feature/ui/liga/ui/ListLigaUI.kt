@@ -1,9 +1,8 @@
-package com.yudikarma.moviecatalogsubmision2.feature.ui.Liga.ui
+package com.yudikarma.moviecatalogsubmision2.feature.ui.liga.ui
 
 import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import androidx.core.view.marginStart
 import com.yudikarma.moviecatalogsubmision2.R
 import org.jetbrains.anko.*
 

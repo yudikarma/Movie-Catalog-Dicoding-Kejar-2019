@@ -1,19 +1,33 @@
 package com.yudikarma.moviecatalogsubmision2.feature.ui.match.detailMatch
 
 
+import android.database.sqlite.SQLiteConstraintException
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.navArgs
+import com.like.LikeButton
+import com.like.OnLikeListener
 
 import com.yudikarma.moviecatalogsubmision2.R
+import com.yudikarma.moviecatalogsubmision2.data.Database.Favorite
+import com.yudikarma.moviecatalogsubmision2.data.Database.database
+import com.yudikarma.moviecatalogsubmision2.data.network.Status
 import com.yudikarma.moviecatalogsubmision2.data.network.model.EventsItem
 import com.yudikarma.moviecatalogsubmision2.feature.base.BaseFragment
+import com.yudikarma.moviecatalogsubmision2.utils.EspressoIdlingResource
 import com.yudikarma.moviecatalogsubmision2.utils.loadImage
 import kotlinx.android.synthetic.main.fragment_detail_march.*
+import kotlinx.android.synthetic.main.fragment_detail_march.view.*
+import org.jetbrains.anko.db.classParser
+import org.jetbrains.anko.db.delete
+import org.jetbrains.anko.db.insert
+import org.jetbrains.anko.db.select
+import org.jetbrains.anko.support.v4.toast
 
 class DetailMatchFragment : BaseFragment() {
 
@@ -23,8 +37,11 @@ class DetailMatchFragment : BaseFragment() {
 
         viewModel.data.observe(this, Observer {
             it?.events?.get(0)?.let {
+                EspressoIdlingResource.increment()
                 setupViewDetail(it)
+                EspressoIdlingResource.increment()
                 viewModel.getTeamInfoHome(it.idHomeTeam)
+                EspressoIdlingResource.increment()
                 viewModel.getTeamInfoAway(it.idAwayTeam)
             }
         })
@@ -37,23 +54,31 @@ class DetailMatchFragment : BaseFragment() {
             logo_team_away.loadImage("${it.teams?.get(0)?.strTeamBadge}/preview")
         })
 
+        viewModel.networkState.observe(this, androidx.lifecycle.Observer {
+            if (it.status == Status.FAILED){
+                toast("${it.msg}")
+            }
+            if (it.status == Status.RUNNING){
+                EspressoIdlingResource.increment()
+            } else {
+                EspressoIdlingResource.decrement()
+            }
+
+        })
+
 
     }
 
 
     lateinit var viewModel: DetailMatchViewModel
+    private var id = ""
+    private var favoriteModel = Favorite()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail_march, container, false)
-
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         val safeVarargs : DetailMatchFragmentArgs by navArgs()
 
 
@@ -63,16 +88,40 @@ class DetailMatchFragment : BaseFragment() {
         if (eventsItem == EventsItem()){
             if (savedInstanceState == null){
                 eventsItem2?.let {
+                    id = it.idEvent
+                    EspressoIdlingResource.increment()
                     viewModel.getDetailMatch(it.idEvent)
+
                 }
             }
         }else{
             if (savedInstanceState == null){
                 eventsItem?.let {
+                    id = it.idEvent
+                    EspressoIdlingResource.increment()
                     viewModel.getDetailMatch(it.idEvent)
                 }
             }
         }
+        return inflater.inflate(R.layout.fragment_detail_march, container, false)
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setEnableFavoriteState(false)
+
+        btn_favorite.setOnLikeListener(object : OnLikeListener{
+            override fun liked(likeButton: LikeButton?) {
+                addFavorite()
+            }
+
+            override fun unLiked(likeButton: LikeButton?) {
+                removeFavorite()
+            }
+
+        })
 
     }
 
@@ -117,9 +166,76 @@ class DetailMatchFragment : BaseFragment() {
          txt_value_red_card_away.text = redCardAway
 
 
+         favoriteState()
+         /*
+         val id: Long? = 0, val eventId: String? = "", val dateEvent: String? = "", val homeTeam: String? = "", val homeScore: String? = "",
+                    val awayTeam: String? = "", val awayScore: String? = ""
+         * */
+         favoriteModel = Favorite(eventId = resultsItem.idEvent,
+             dateEvent = resultsItem.dateEvent, homeTeam =  resultsItem.strHomeTeam,homeScore = resultsItem.intHomeScore,
+             awayTeam = resultsItem.strAwayTeam,awayScore = resultsItem.intAwayScore)
+
+         setEnableFavoriteState(true)
+
 
      }
 
+    private fun favoriteState() {
+        context.database.use {
+            val result = select(Favorite.TABLE_FAVORITE)
+                .whereArgs(
+                    "(EVENT_ID = {id})",
+                    "id" to id
+                )
+            val favorite = result.parseList(classParser<Favorite>())
+            if (!favorite.isEmpty()) btn_favorite.isLiked = true
+        }
+    }
+
+    private fun addFavorite(){
+        try {
+            context.database.use {
+                insert(
+                    Favorite.TABLE_FAVORITE,
+                    Favorite.EVENT_ID to favoriteModel.eventId,
+                    Favorite.DATE_EVENT to favoriteModel.dateEvent,
+                    Favorite.HOME_TEAM to favoriteModel.homeTeam,
+                    Favorite.HOME_SCORE to favoriteModel.homeScore,
+                    Favorite.AWAY_TEAM to favoriteModel.awayTeam,
+                    Favorite.AWAY_SCORE to favoriteModel.awayScore
+                )
+            }
+            setFavoriteState(true)
+            toast("Added to favorite")
+        } catch (e: SQLiteConstraintException) {
+           toast(e.localizedMessage)
+            setFavoriteState(false)
+        }
+    }
+
+    private fun removeFavorite(){
+        try {
+            context.database.use {
+                delete(
+                    Favorite.TABLE_FAVORITE, "(EVENT_ID = {id})",
+                    "id" to id
+                )
+            }
+            toast("Removed to favorite").show()
+            setFavoriteState(false)
+        } catch (e: SQLiteConstraintException) {
+            toast(e.localizedMessage).show()
+            setFavoriteState(true)
+        }
+    }
+
+    fun setFavoriteState(isFavorite:Boolean){
+        btn_favorite.isLiked = isFavorite
+    }
+
+    fun setEnableFavoriteState(isEnable:Boolean){
+        btn_favorite.isEnabled = isEnable
+    }
 
 
 }

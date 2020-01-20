@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.yudikarma.moviecatalogsubmision2.feature.ui.match.MainViewModel
 import com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.DashboardViewModel
 import com.yudikarma.moviecatalogsubmision2.feature.ui.match.detailMatch.DetailMatchViewModel
+import com.yudikarma.moviecatalogsubmision2.feature.ui.match.favoriteMatch.FavoriteMatchViewModel
 import com.yudikarma.moviecatalogsubmision2.feature.ui.match.lastMatch.ListLastMatchViewModel
 import com.yudikarma.moviecatalogsubmision2.feature.ui.match.nextMatch.ListNextMatchViewModel
 import dagger.Binds
@@ -58,5 +59,12 @@ internal abstract class ViewModelModule {
     @ViewModelKey(DashboardViewModel::class)
     internal abstract fun bindDashboardViewModel(
         dashboardViewModel: DashboardViewModel
+    ):ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(FavoriteMatchViewModel::class)
+    internal abstract fun bindFavoriteViewModel(
+        favoriteMatchViewModel: FavoriteMatchViewModel
     ):ViewModel
 }

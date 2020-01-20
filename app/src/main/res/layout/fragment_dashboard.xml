@@ -10,7 +10,6 @@
             android:id="@+id/appbar"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@color/grey_5"
             app:elevation="0.0dip"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,9 +35,10 @@
                     app:title=""
                     app:titleTextColor="@color/colorPrimary" />
 
-            <com.miguelcatalan.materialsearchview.MaterialSearchView
+            <EditText
                     android:id="@+id/search_view"
-                    style="@style/MaterialSearchViewStyle"
+                    android:hint="Search.."
+                    android:textColorHint="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
         </FrameLayout>

@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class LastMatchModel(@SerializedName("events")
-                          val events: List<EventsItem>?):Parcelable
+                          val events: List<EventsItem>? = emptyList()):Parcelable
 
 
 @Parcelize

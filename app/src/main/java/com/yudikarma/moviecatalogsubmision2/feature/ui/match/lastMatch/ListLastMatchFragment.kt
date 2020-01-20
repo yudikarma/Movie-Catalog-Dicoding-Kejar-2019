@@ -12,7 +12,11 @@ import com.yudikarma.moviecatalogsubmision2.data.network.Status
 import com.yudikarma.moviecatalogsubmision2.data.network.model.EventsItem
 import com.yudikarma.moviecatalogsubmision2.feature.base.BaseFragment
 import com.yudikarma.moviecatalogsubmision2.feature.ui.match.MainActivity
-import kotlinx.android.synthetic.main.fragment_fragment_list_match.*
+import com.yudikarma.moviecatalogsubmision2.utils.EspressoIdlingResource
+import kotlinx.android.synthetic.main.fragment_fragment_favorite_match.*
+import kotlinx.android.synthetic.main.fragment_fragment_favorite_match.container_shimmer
+import kotlinx.android.synthetic.main.fragment_fragment_favorite_match.no_data_movie
+import kotlinx.android.synthetic.main.fragment_fragment_last_match.*
 import org.jetbrains.anko.toast
 
 
@@ -37,7 +41,18 @@ class ListLastMatchFragment : BaseFragment(),
     ): View? {
         setHasOptionsMenu(true)
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_list_match, container, false)
+
+
+        return inflater.inflate(R.layout.fragment_fragment_last_match, container, false)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (savedInstanceState == null) {
+            val id = (context as? MainActivity)?.id
+            EspressoIdlingResource.increment()
+            viewModel.getLastMatch(id ?: "4328")
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,17 +60,12 @@ class ListLastMatchFragment : BaseFragment(),
 
         setupRecycleView()
 
-        if (savedInstanceState == null) {
-            val id = (context as? MainActivity)?.id
-            viewModel.getLastMatch(id ?: "4328")
-        }
-
 
     }
 
 
     private fun setupRecycleView() {
-        with(recycleview_listmovie){
+        with(recycleview_last_match){
             layoutManager = LinearLayoutManager(context)
             adapter = rvAdapter
         }
@@ -84,11 +94,13 @@ class ListLastMatchFragment : BaseFragment(),
     }
 
     fun visibleRvView(){
-        recycleview_listmovie.visibility = View.VISIBLE
+        recycleview_last_match.visibility = View.VISIBLE
+        unvVisibleShimmer()
+        unVisibleNoData()
     }
 
     fun unVisibleRvView(){
-        recycleview_listmovie.visibility = View.GONE
+        recycleview_last_match.visibility = View.GONE
     }
 
 
@@ -103,7 +115,13 @@ class ListLastMatchFragment : BaseFragment(),
             if (it.status == Status.FAILED){
                 context.toast("${it.msg}")
             }
-            if (it.status == Status.RUNNING) visibleShimmer() else unvVisibleShimmer()
+            if (it.status == Status.RUNNING) {
+                visibleShimmer()
+                EspressoIdlingResource.increment()
+            } else {
+                unvVisibleShimmer()
+                EspressoIdlingResource.decrement()
+            }
 
         })
 

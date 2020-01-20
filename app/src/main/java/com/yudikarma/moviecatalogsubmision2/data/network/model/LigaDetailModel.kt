@@ -29,6 +29,6 @@ data class LeaguesItem(@SerializedName("strDescriptionES")
 
 @Parcelize
 data class LigaDetailModel(@SerializedName("leagues")
-                           val leagues: List<LeaguesItem>?):Parcelable
+                           val leagues: List<LeaguesItem>? = null):Parcelable
 
 

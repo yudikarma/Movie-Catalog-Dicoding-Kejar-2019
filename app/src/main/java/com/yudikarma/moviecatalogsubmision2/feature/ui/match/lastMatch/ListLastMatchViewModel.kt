@@ -1,5 +1,6 @@
 package com.yudikarma.moviecatalogsubmision2.feature.ui.match.lastMatch
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.yudikarma.moviecatalogsubmision2.data.network.NetworkState
 import com.yudikarma.moviecatalogsubmision2.data.network.model.EventsItem
@@ -38,6 +39,8 @@ class ListLastMatchViewModel@Inject constructor(): BaseViewModel() {
             }
         }
     }
+
+
 
 
 }

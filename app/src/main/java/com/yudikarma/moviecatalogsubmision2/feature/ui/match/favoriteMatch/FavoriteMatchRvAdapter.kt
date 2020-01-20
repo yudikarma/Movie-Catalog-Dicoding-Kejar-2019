@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
+import com.yudikarma.moviecatalogsubmision2.R
+import com.yudikarma.moviecatalogsubmision2.data.Database.Favorite
+import kotlinx.android.synthetic.main.item_list_match.view.*
 
 class FavoriteMatchRvAdapter(private val interaction: Interaction? = null) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -13,11 +16,11 @@ class FavoriteMatchRvAdapter(private val interaction: Interaction? = null) :
     val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Favorite>() {
 
         override fun areItemsTheSame(oldItem: Favorite, newItem: Favorite): Boolean {
-            TODO("not implemented")
+            return oldItem == newItem
         }
 
         override fun areContentsTheSame(oldItem: Favorite, newItem: Favorite): Boolean {
-            TODO("not implemented")
+            return oldItem.id == newItem.id
         }
 
     }
@@ -28,7 +31,7 @@ class FavoriteMatchRvAdapter(private val interaction: Interaction? = null) :
 
         return FavoriteMatchViewHolders(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.,
+                R.layout.item_list_match,
                 parent,
                 false
             ),
@@ -62,8 +65,18 @@ class FavoriteMatchRvAdapter(private val interaction: Interaction? = null) :
             itemView.setOnClickListener {
                 interaction?.onItemSelected(adapterPosition, item)
             }
-
-            TODO("bind view with data")
+            //itemView.logo_team_2.loadImage(item.strThumb+"/preview")
+            itemView.name_match.visibility = View.INVISIBLE
+            val eventDate = if (item.dateEvent == null) "-" else "${item.dateEvent}"
+            itemView.rilis_match.text = eventDate
+            val homeTeam = if (item.homeTeam == null) "-" else "${item.homeTeam}"
+            itemView.name_team_1.text = homeTeam
+            val awayTeam = if (item.awayTeam == null) "-" else "${item.awayTeam}"
+            itemView.name_team_2.text = awayTeam
+            val homeScore = if (item.homeScore == null) "-" else "\"${item.homeScore}\""
+            itemView.score_team_1.text = homeScore
+            val awayScore = if (item.awayScore == null) "-" else "${item.awayScore}"
+            itemView.score_team_2.text = awayScore
         }
     }
 

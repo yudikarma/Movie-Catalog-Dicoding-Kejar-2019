@@ -1,7 +1,7 @@
-package com.dicoding.submission2.db
+package com.yudikarma.moviecatalogsubmision2.data.Database
 
-data class Favorite(val id: Long?, val eventId: String?, val dateEvent: String?, val homeTeam: String?, val homeScore: String?,
-                    val awayTeam: String?, val awayScore: String?) {
+data class Favorite(val id: Long? = 0, val eventId: String? = "", val dateEvent: String? = "", val homeTeam: String? = "", val homeScore: String? = "",
+                    val awayTeam: String? = "", val awayScore: String? = "") {
 
     companion object {
         const val TABLE_FAVORITE: String = "TABLE_FAVORITE"

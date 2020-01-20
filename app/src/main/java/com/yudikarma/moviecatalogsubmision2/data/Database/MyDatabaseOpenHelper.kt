@@ -1,4 +1,5 @@
-package com.dicoding.submission2.db
+package com.yudikarma.moviecatalogsubmision2.data.Database
+
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase

@@ -100,6 +100,6 @@ data class TeamsItem(@SerializedName("intStadiumCapacity")
 
 
 data class TeamDetailModel(@SerializedName("teams")
-                           val teams: List<TeamsItem>?)
+                           val teams: List<TeamsItem>? = emptyList())
 
 

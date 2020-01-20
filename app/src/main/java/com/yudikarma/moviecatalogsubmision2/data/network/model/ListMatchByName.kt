@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class ListMatchByName(@SerializedName("event")
-                          val events: List<EventsItemMatchByName>?):Parcelable
+                          val events: List<EventsItemMatchByName>? = null):Parcelable
 
 
 @Parcelize

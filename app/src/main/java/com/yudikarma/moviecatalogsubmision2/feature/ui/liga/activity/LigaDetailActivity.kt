@@ -1,4 +1,4 @@
-package com.yudikarma.moviecatalogsubmision2.feature.ui.Liga.activity
+package com.yudikarma.moviecatalogsubmision2.feature.ui.liga.activity
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.Gravity
 import com.squareup.picasso.Picasso
 import com.yudikarma.moviecatalogsubmision2.R
-import com.yudikarma.moviecatalogsubmision2.feature.ui.Liga.model.ListLigaModel
+import com.yudikarma.moviecatalogsubmision2.feature.ui.liga.model.ListLigaModel
 import com.yudikarma.moviecatalogsubmision2.feature.ui.match.MainActivity
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk27.coroutines.onClick

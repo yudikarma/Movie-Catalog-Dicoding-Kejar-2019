@@ -1,4 +1,4 @@
-package com.yudikarma.moviecatalogsubmision2.feature.ui.Liga.model
+package com.yudikarma.moviecatalogsubmision2.feature.ui.liga.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
