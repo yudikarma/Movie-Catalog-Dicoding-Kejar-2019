@@ -1,6 +1,7 @@
 package com.yudikarma.moviecatalogsubmision2.feature.ui.match.detailMatch
 
 import android.content.Context
+import androidx.lifecycle.MutableLiveData
 import com.yudikarma.moviecatalogsubmision2.data.Repository
 import com.yudikarma.moviecatalogsubmision2.data.local.database.AppDatabase
 import com.yudikarma.moviecatalogsubmision2.data.network.client.ApiHelper
@@ -34,6 +35,8 @@ class DetailMatchViewModelTest {
     private val deferredGetDetailMatch = CompletableDeferred<Response<LastMatchModel>>()
     private val responseGetTeamInfoHome = TeamDetailModel()
     private val deferredGetTeamInfoHome = CompletableDeferred<Response<TeamDetailModel>>()
+    private val data = MutableLiveData<LastMatchModel>()
+    private val dataNew = MutableLiveData<LastMatchModel>()
 
 
     @Mock
@@ -50,13 +53,20 @@ class DetailMatchViewModelTest {
 
         //given
         Mockito.`when`(repository.getDetailMatch(idLiga)).thenReturn( deferredGetDetailMatch)
+        if (deferredGetDetailMatch.isCompleted){
+            dataNew.value = deferredGetDetailMatch.getCompleted().body()
+        }
 
         //do
         val repo = repository.getDetailMatch(idLiga)
 
         //result
         if (repo.isCompleted){
+            data.value = repo.getCompleted().body()
+
+
             assert(repo.getCompleted().body() == responseDetailMatch)
+            assert(data == dataNew)
         }
     }
 

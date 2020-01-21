@@ -1,6 +1,7 @@
 package com.yudikarma.moviecatalogsubmision2.feature.ui.match.lastMatch
 
 import android.content.Context
+import androidx.lifecycle.MutableLiveData
 import com.yudikarma.moviecatalogsubmision2.data.Repository
 import com.yudikarma.moviecatalogsubmision2.data.local.database.AppDatabase
 import com.yudikarma.moviecatalogsubmision2.data.network.client.ApiHelper
@@ -31,6 +32,8 @@ class ListLastMatchViewModelTest {
     private val lastMatchModel = LastMatchModel()
 
     private val deferredLastMatch = CompletableDeferred<Response<LastMatchModel>>()
+    private val data = MutableLiveData<LastMatchModel>()
+    private val dataNew = MutableLiveData<LastMatchModel>()
 
 
     @Mock
@@ -46,13 +49,20 @@ class ListLastMatchViewModelTest {
     fun getLastMatch() {
         //given
         Mockito.`when`(repository.getLastMatch(idLiga)).thenReturn( deferredLastMatch)
+        if (deferredLastMatch.isCompleted){
+            dataNew.value = deferredLastMatch.getCompleted().body()
+        }
 
         //do
         val repo = repository.getLastMatch(idLiga)
 
         //result
         if (repo.isCompleted){
+            data.value = repo.getCompleted().body()
+
+
             assert(repo.getCompleted().body() == lastMatchModel)
+            assert(dataNew == data)
         }
     }
 }

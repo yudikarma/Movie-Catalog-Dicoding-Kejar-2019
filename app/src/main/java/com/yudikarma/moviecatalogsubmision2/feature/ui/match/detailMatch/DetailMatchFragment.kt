@@ -59,9 +59,9 @@ class DetailMatchFragment : BaseFragment() {
                 toast("${it.msg}")
             }
             if (it.status == Status.RUNNING){
-                EspressoIdlingResource.increment()
+
             } else {
-                EspressoIdlingResource.decrement()
+
             }
 
         })

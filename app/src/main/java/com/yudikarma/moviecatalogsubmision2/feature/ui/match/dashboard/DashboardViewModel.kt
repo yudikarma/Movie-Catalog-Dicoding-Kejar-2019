@@ -6,6 +6,7 @@ import com.yudikarma.moviecatalogsubmision2.data.network.model.LigaDetailModel
 import com.yudikarma.moviecatalogsubmision2.data.network.model.ListMatchByName
 import com.yudikarma.moviecatalogsubmision2.feature.base.BaseViewModel
 import com.yudikarma.moviecatalogsubmision2.utils.AppConstants
+import com.yudikarma.moviecatalogsubmision2.utils.EspressoIdlingResource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -20,12 +21,15 @@ class DashboardViewModel @Inject constructor():BaseViewModel() {
         networkState.postValue(NetworkState.LOADING)
         GlobalScope.launch(Dispatchers.Main){
             try {
+                EspressoIdlingResource.increment()
                 val request = repository.getDetailLifa(id)
                 val response = request.await()
                 if (response.isSuccessful){
                     networkState.postValue(NetworkState.LOADED)
                     data.value = response.body()
+                    EspressoIdlingResource.decrement()
                 }else{
+                    EspressoIdlingResource.decrement()
                     networkState.postValue(NetworkState.error(response.message()))
                 }
             }catch (e : Exception){
@@ -34,6 +38,7 @@ class DashboardViewModel @Inject constructor():BaseViewModel() {
                 }else{
                     networkState.postValue(NetworkState.error(e.localizedMessage))
                 }
+                EspressoIdlingResource.decrement()
             }
         }
     }
@@ -44,12 +49,15 @@ class DashboardViewModel @Inject constructor():BaseViewModel() {
         networkState.postValue(NetworkState.LOADING)
         GlobalScope.launch(Dispatchers.Main){
             try {
+                EspressoIdlingResource.increment()
                 val request = repository.getMatchByName(keyword)
                 val response = request.await()
                 if (response.isSuccessful){
                     networkState.postValue(NetworkState.LOADED)
                     dataMatchByName.value = response.body()
+                    EspressoIdlingResource.decrement()
                 }else{
+                    EspressoIdlingResource.decrement()
                     networkState.postValue(NetworkState.error(response.message()))
                 }
             }catch (e : java.lang.Exception){
@@ -58,6 +66,7 @@ class DashboardViewModel @Inject constructor():BaseViewModel() {
                 }else{
                     networkState.postValue(NetworkState.error(e.localizedMessage))
                 }
+                EspressoIdlingResource.decrement()
             }
         }
     }

@@ -8,6 +8,7 @@ import com.yudikarma.moviecatalogsubmision2.data.network.model.ResultsItem
 import com.yudikarma.moviecatalogsubmision2.data.network.model.TeamDetailModel
 import com.yudikarma.moviecatalogsubmision2.feature.base.BaseViewModel
 import com.yudikarma.moviecatalogsubmision2.utils.AppConstants
+import com.yudikarma.moviecatalogsubmision2.utils.EspressoIdlingResource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -37,13 +38,17 @@ class DetailMatchViewModel@Inject constructor() : BaseViewModel(){
         networkState.postValue(NetworkState.LOADING)
         GlobalScope.launch(Dispatchers.Main){
             try {
+                EspressoIdlingResource.increment()
                 val request = repository.getDetailMatch(eventId)
                 val response = request.await()
                 if (response.isSuccessful){
                     networkState.postValue(NetworkState.LOADED)
                     data.value = response.body()
+                    EspressoIdlingResource.decrement()
                 }else{
                     networkState.postValue(NetworkState.error(response.message()))
+                    EspressoIdlingResource.decrement()
+
                 }
             }catch (e : Exception){
                 if (e is IOException){
@@ -51,6 +56,7 @@ class DetailMatchViewModel@Inject constructor() : BaseViewModel(){
                 }else{
                     networkState.postValue(NetworkState.error(e.localizedMessage))
                 }
+                EspressoIdlingResource.decrement()
             }
         }
     }

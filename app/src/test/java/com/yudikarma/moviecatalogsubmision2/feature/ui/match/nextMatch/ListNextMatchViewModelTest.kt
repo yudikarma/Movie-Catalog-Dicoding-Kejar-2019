@@ -76,7 +76,6 @@ class ListNextMatchViewModelTest {
             data.value = repo.getCompleted().body()
 
             assert(repo.getCompleted().body() == lastMatchModel)
-            //return
             assert(dataNew == data)
         }
 

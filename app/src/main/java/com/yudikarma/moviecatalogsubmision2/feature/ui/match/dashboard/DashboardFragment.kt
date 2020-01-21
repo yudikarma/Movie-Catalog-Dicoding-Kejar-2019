@@ -103,10 +103,9 @@ MaterialSearchView.SearchViewListener {
             }
             if (it.status == Status.RUNNING){
                 visibleShimmer()
-                EspressoIdlingResource.increment()
             } else {
                 unvVisibleShimmer()
-                EspressoIdlingResource.decrement()
+
             }
 
         })
