@@ -55,40 +55,20 @@ class MainActivityTest{
     @Test
     fun test_navigationToSearch(){
 
-        // val mockNavController = mock(NavController::class.java)
-        //onView(withId(R.id.action_search)).perform(click())
-
         onView(isAssignableFrom(EditText::class.java)).perform(typeText("arsenal"))
-        Thread.sleep(4000)
+        Thread.sleep(4000) //fungsi sleep digunakan untuk ngasih tau edittext untuk hit api ketika user sedang tidak mengetik
         onView(isAssignableFrom(EditText::class.java)).perform(clearText())
 
         onView(isAssignableFrom(EditText::class.java)).perform(typeText("chelsea"))
-        Thread.sleep(4000)
+        Thread.sleep(4000) //fungsi sleep digunakan untuk ngasih tau edittext untuk hit api ketika user sedang tidak mengetik
         onView(isAssignableFrom(EditText::class.java)).perform(clearText())
 
 
         onView(isAssignableFrom(EditText::class.java)).perform(typeText("manchester"))
-        Thread.sleep(4000)
+        Thread.sleep(4000) //fungsi sleep digunakan untuk ngasih tau edittext untuk hit api ketika user sedang tidak mengetik
         onView(isAssignableFrom(EditText::class.java)).perform(clearText())
         pressBack()
 
-        // onView(withId(R.id.search_view)).perform(typeText("arsenal"))
-
-        //onView(withId(R.id.search_view)).perform(pressKey(KeyEvent.KEYCODE_ENTER))
-
-        // Thread.sleep(5000)
-
-        //onView(withId(R.id.recycler_view)).perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()));
-
-        //onView(withId(R.id.btn_favorite)).perform(click())
-
-        // onView(withId(R.id.action_search)).perform((typeText("arsenal")), pressKey(KeyEvent.KEYCODE_ENTER))
-        //onView(isAssignableFrom(Autocom::class.java)).perform(click())
-        //onView(isDescendantOfA(withId(R.id.search_view)),
-        //   isAssignableFrom(MaterialSearchView.class))).perform(typeText("juventus"))
-        //onView(withId(R.id.recycleview_last_match)).perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()));
-        //onView(ViewMatchers.withId(R.id.search_view)).perform(ViewActions.click())
-        //verify(mockNavController).navigate(R.id.action_fragmentListMovie_to_detailMovieFragment)
 
 
     }

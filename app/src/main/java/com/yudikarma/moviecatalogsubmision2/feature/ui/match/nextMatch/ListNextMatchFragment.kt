@@ -71,7 +71,6 @@ class ListNextMatchFragment : BaseFragment(),
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null){
             val id = (context as? MainActivity)?.id
-            EspressoIdlingResource.increment()
             model.getListNextMatch(id?:"4328")
         }
     }

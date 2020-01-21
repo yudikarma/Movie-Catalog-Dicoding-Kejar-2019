@@ -178,7 +178,6 @@ MaterialSearchView.SearchViewListener {
 
       if (savedInstanceState == null){
             val id = (context as? MainActivity)?.id
-           EspressoIdlingResource.increment()
             dashboardViewModel.getDetailLiga(id?:"4328")
         }
 
@@ -232,7 +231,6 @@ MaterialSearchView.SearchViewListener {
 
 
     private fun getMatchByName(keyword:String){
-        EspressoIdlingResource.increment()
         dashboardViewModel.getMatchByName(keyword)
 
 

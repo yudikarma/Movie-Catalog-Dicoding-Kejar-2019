@@ -89,7 +89,7 @@ class DetailMatchFragment : BaseFragment() {
             if (savedInstanceState == null){
                 eventsItem2?.let {
                     id = it.idEvent
-                    EspressoIdlingResource.increment()
+
                     viewModel.getDetailMatch(it.idEvent)
 
                 }
@@ -98,7 +98,7 @@ class DetailMatchFragment : BaseFragment() {
             if (savedInstanceState == null){
                 eventsItem?.let {
                     id = it.idEvent
-                    EspressoIdlingResource.increment()
+
                     viewModel.getDetailMatch(it.idEvent)
                 }
             }

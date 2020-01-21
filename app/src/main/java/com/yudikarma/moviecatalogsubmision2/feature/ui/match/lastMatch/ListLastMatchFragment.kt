@@ -50,7 +50,7 @@ class ListLastMatchFragment : BaseFragment(),
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
             val id = (context as? MainActivity)?.id
-            EspressoIdlingResource.increment()
+
             viewModel.getLastMatch(id ?: "4328")
         }
     }
