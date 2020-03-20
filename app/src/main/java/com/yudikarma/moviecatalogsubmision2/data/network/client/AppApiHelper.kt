@@ -7,6 +7,10 @@ import javax.inject.Inject
 
 class AppApiHelper @Inject constructor(
             private val apiNetwork: ApiNetwork) :ApiHelper{
+    override fun getAllTeamInLiga(ligaName: String): Deferred<Response<TeamModel>> = apiNetwork.getAllTeamInLIga(ligaName)
+
+    override fun getTeamByName(teamName: String): Deferred<Response<TeamModel>> = apiNetwork.getTeamInByName(teamName)
+
     override fun getDetailTeamInfo(id: String): Deferred<Response<TeamDetailModel>> = apiNetwork.getTeamInfoDetail(id)
 
     override fun getDetailLifa(id: String): Deferred<Response<LigaDetailModel>> = apiNetwork.getDetailLiga(id)

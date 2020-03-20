@@ -167,7 +167,6 @@ dependencies {
     implementation "com.android.support.test.espresso:espresso-idling-resource:$espresso"
 
 
-
     /* // The following Espresso dependency can be either "implementation"
      // or "androidTestImplementation", depending on whether you want the
      // dependency to appear on your APK's compile classpath or the test APK
@@ -196,8 +195,8 @@ dependencies {
     }
 
 
-    implementation ("androidx.fragment:fragment-testing:1.1.0-beta01"){
-            exclude group: 'androidx.test', module: 'core'
+    implementation("androidx.fragment:fragment-testing:1.1.0-beta01") {
+        exclude group: 'androidx.test', module: 'core'
     }
 
     testImplementation 'org.robolectric:robolectric:4.3.1'

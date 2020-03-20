@@ -43,31 +43,5 @@ class DashboardViewModel @Inject constructor():BaseViewModel() {
         }
     }
 
-    val dataMatchByName = MutableLiveData<ListMatchByName>()
 
-    fun getMatchByName(keyword:String){
-        networkState.postValue(NetworkState.LOADING)
-        GlobalScope.launch(Dispatchers.Main){
-            try {
-                EspressoIdlingResource.increment()
-                val request = repository.getMatchByName(keyword)
-                val response = request.await()
-                if (response.isSuccessful){
-                    networkState.postValue(NetworkState.LOADED)
-                    dataMatchByName.value = response.body()
-                    EspressoIdlingResource.decrement()
-                }else{
-                    EspressoIdlingResource.decrement()
-                    networkState.postValue(NetworkState.error(response.message()))
-                }
-            }catch (e : java.lang.Exception){
-                if (e is IOException){
-                    networkState.postValue(NetworkState.failure(AppConstants.CONNECTION_FAILED))
-                }else{
-                    networkState.postValue(NetworkState.error(e.localizedMessage))
-                }
-                EspressoIdlingResource.decrement()
-            }
-        }
-    }
 }

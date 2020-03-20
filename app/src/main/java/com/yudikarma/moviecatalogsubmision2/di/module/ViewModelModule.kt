@@ -4,10 +4,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.yudikarma.moviecatalogsubmision2.feature.ui.match.MainViewModel
 import com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.DashboardViewModel
-import com.yudikarma.moviecatalogsubmision2.feature.ui.match.detailMatch.DetailMatchViewModel
-import com.yudikarma.moviecatalogsubmision2.feature.ui.match.favoriteMatch.FavoriteMatchViewModel
-import com.yudikarma.moviecatalogsubmision2.feature.ui.match.lastMatch.ListLastMatchViewModel
-import com.yudikarma.moviecatalogsubmision2.feature.ui.match.nextMatch.ListNextMatchViewModel
+import com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.detail.detailMatch.DetailMatchViewModel
+import com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.detail.detailTeam.TeamDetailViewModel
+import com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.favorite.favoriteMatch.FavoriteMatchViewModel
+import com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.favorite.favoriteTeam.TeamFavoriteViewModel
+import com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.lastMatch.ListLastMatchViewModel
+import com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.nextMatch.ListNextMatchViewModel
+import com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.search.match.SearchMatchViewModel
+import com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.search.team.SearchTeamViewModel
+import com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.team.TeamViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -66,5 +71,42 @@ internal abstract class ViewModelModule {
     @ViewModelKey(FavoriteMatchViewModel::class)
     internal abstract fun bindFavoriteViewModel(
         favoriteMatchViewModel: FavoriteMatchViewModel
+    ):ViewModel
+
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(TeamFavoriteViewModel::class)
+    internal abstract fun bindFavoriteTeamViewModel(
+        teamFavoriteViewModel: TeamFavoriteViewModel
+    ):ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SearchTeamViewModel::class)
+    internal abstract fun bindSearchTeamViewModel(
+       searchTeamViewModel: SearchTeamViewModel
+    ):ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(TeamViewModel::class)
+    internal abstract fun bindTeamTeamViewModel(
+       teamViewModel: TeamViewModel
+    ):ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SearchMatchViewModel::class)
+    internal abstract fun bindSearchMatchViewModel(
+       searchMatchViewModel: SearchMatchViewModel
+    ):ViewModel
+
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(TeamDetailViewModel::class)
+    internal abstract fun bindTeamDetailViewModel(
+       teamDetailViewModel: TeamDetailViewModel
     ):ViewModel
 }

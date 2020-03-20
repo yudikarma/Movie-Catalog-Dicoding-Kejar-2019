@@ -432,4 +432,20 @@
     <color name="yellow_A700">#ffffd600</color>
     <color name="background_shimmer">#dddddd</color>
 
+    <color name="canvaser_divider">#e0e0e0</color>
+    <color name="canvaser_toolbar">#57C291</color>
+    <color name="canvaser_masking_coordinator">#80E0E0E0</color>
+    <color name="canvaser_fab_detail">#B0E0E0E0</color>
+
+    <color name="canvaser_color_green">#57C291</color>
+    <color name="canvaser_color_orange">#f57c00</color>
+    <color name="canvaser_color_blue">#4EC5F9</color>
+    <color name="canvaser_color_yellow">#F6B443</color>
+    <color name="canvaser_color_abu_abu">#aeaeae</color>
+    <color name="canvaser_color_biru_muda">#B9FBE7</color>
+
+    <color name="canvaser_ic_default_merchant_2">#D8C5E8</color>
+    <color name="canvaser_ic_default_merchant_3">#662D91</color>
+    <color name="canvaser_ic_default_merchant_line">#000000</color>
+
 </resources>

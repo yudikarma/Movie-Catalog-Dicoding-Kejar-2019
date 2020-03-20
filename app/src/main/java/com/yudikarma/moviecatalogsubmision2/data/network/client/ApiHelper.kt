@@ -19,5 +19,7 @@ interface ApiHelper {
     fun getMatchByName(keyword:String):Deferred<Response<ListMatchByName>>
     fun getDetailMatch(id:String):Deferred<Response<LastMatchModel>>
     fun getDetailTeamInfo(id:String):Deferred<Response<TeamDetailModel>>
+    fun getAllTeamInLiga(ligaName:String):Deferred<Response<TeamModel>>
+    fun getTeamByName(teamName:String):Deferred<Response<TeamModel>>
 
 }

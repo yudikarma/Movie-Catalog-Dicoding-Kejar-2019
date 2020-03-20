@@ -13,15 +13,33 @@
                 app:popEnterAnim="@anim/slide_in_left"
                 app:popExitAnim="@anim/slide_out_right"
                 app:destination="@id/detailMovieFragment"/>
-
-
-
+        <action
+                android:id="@+id/action_action_movie_to_containerFavoriteFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"
+                app:destination="@id/containerFavoriteFragment" />
+        <action
+                android:id="@+id/action_action_movie_to_searchMatchFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"
+                app:destination="@id/searchMatchFragment" />
+        <action
+                android:id="@+id/action_action_movie_to_searchTeamFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"
+                app:destination="@id/searchTeamFragment" />
 
 
     </fragment>
 
     <fragment android:id="@+id/detailMovieFragment"
-              android:name="com.yudikarma.moviecatalogsubmision2.feature.ui.match.detailMatch.DetailMatchFragment"
+              android:name="com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.detail.detailMatch.DetailMatchFragment"
               android:label="Detail Match" tools:layout="@layout/fragment_detail_march">
 
         <argument
@@ -34,8 +52,20 @@
 
 
     </fragment>
-
-
+    <fragment
+            android:id="@+id/searchMatchFragment"
+            android:name="com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.search.match.SearchMatchFragment"
+            android:label="SearchMatchFragment" />
+    <fragment
+            android:id="@+id/searchTeamFragment"
+            android:name="com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.search.team.SearchTeamFragment"
+            android:label="fragment_search_team"
+            tools:layout="@layout/fragment_search_team" />
+    <fragment
+            android:id="@+id/containerFavoriteFragment"
+            android:name="com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.favorite.ContainerFavoriteFragment"
+            android:label="fragment_container_favorite"
+            tools:layout="@layout/fragment_container_favorite" />
 
 
 </navigation>

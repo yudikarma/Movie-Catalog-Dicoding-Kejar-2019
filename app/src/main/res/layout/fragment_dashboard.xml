@@ -16,32 +16,12 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints">
 
-        <FrameLayout
-                android:id="@+id/toolbar_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:ignore="MissingConstraints">
 
             <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
-                    android:layout_width="fill_parent"
-                    android:layout_height="?actionBarSize"
-                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                    app:contentInsetStartWithNavigation="0.0dip"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                    app:theme="@style/Toolbar.Light"
-                    app:title=""
-                    app:titleTextColor="@color/colorPrimary" />
-
-            <EditText
-                    android:id="@+id/search_view"
-                    android:hint="Search.."
-                    android:textColorHint="@color/white"
+                    android:padding="8dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-        </FrameLayout>
+                    android:layout_height="?attr/actionBarSize" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.card.MaterialCardView
@@ -159,57 +139,5 @@
 
 
 
-
-    <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:visibility="gone"
-            android:id="@+id/recycler_view"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appbar"
-            tools:ignore="MissingConstraints"/>
-
-
-    <com.facebook.shimmer.ShimmerFrameLayout android:layout_width="match_parent"
-            android:id="@+id/container_shimmer"
-            android:layout_height="match_parent"
-            android:elevation="1dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appbar"
-            >
-        <LinearLayout android:orientation="vertical" android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            <include layout="@layout/item_list_match_shimmer"></include>
-            <include layout="@layout/item_list_match_shimmer"></include>
-            <include layout="@layout/item_list_match_shimmer"></include>
-            <include layout="@layout/item_list_match_shimmer"></include>
-            <include layout="@layout/item_list_match_shimmer"></include>
-            <include layout="@layout/item_list_match_shimmer"></include>
-            <include layout="@layout/item_list_match_shimmer"></include>
-            <include layout="@layout/item_list_match_shimmer"></include>
-        </LinearLayout>
-
-    </com.facebook.shimmer.ShimmerFrameLayout>
-
-    <TextView
-            android:id="@+id/no_data_"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:text="@string/not_found_movie"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appbar"
-            tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -56,16 +56,16 @@ class MainActivityTest{
     fun test_navigationToSearch(){
 
         onView(isAssignableFrom(EditText::class.java)).perform(typeText("arsenal"))
-        Thread.sleep(4000) //fungsi sleep digunakan untuk ngasih tau edittext untuk hit api ketika user sedang tidak mengetik
+        Thread.sleep(4000) //fungsi sleep digunakan untuk ngasih tau edittext untuk hit api ketika user sedang tidak mengetik. jadi dikasih sleep
         onView(isAssignableFrom(EditText::class.java)).perform(clearText())
 
         onView(isAssignableFrom(EditText::class.java)).perform(typeText("chelsea"))
-        Thread.sleep(4000) //fungsi sleep digunakan untuk ngasih tau edittext untuk hit api ketika user sedang tidak mengetik
+        Thread.sleep(4000) //fungsi sleep digunakan untuk ngasih tau edittext untuk hit api ketika user sedang tidak mengetik. jadi dikasih sleep
         onView(isAssignableFrom(EditText::class.java)).perform(clearText())
 
 
         onView(isAssignableFrom(EditText::class.java)).perform(typeText("manchester"))
-        Thread.sleep(4000) //fungsi sleep digunakan untuk ngasih tau edittext untuk hit api ketika user sedang tidak mengetik
+        Thread.sleep(4000) //fungsi sleep digunakan untuk ngasih tau edittext untuk hit api ketika user sedang tidak mengetik. jadi dikasih sleep
         onView(isAssignableFrom(EditText::class.java)).perform(clearText())
         pressBack()
 

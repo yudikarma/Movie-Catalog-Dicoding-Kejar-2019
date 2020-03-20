@@ -4,7 +4,14 @@
             android:id="@+id/action_search"
             android:icon="@drawable/ic_search_black_24dp"
             android:orderInCategory="100"
-            android:iconTint="@color/colorPrimary"
-            android:title="@string/abc_search_hint"
+            android:iconTint="@color/white"
+            android:title=""
+            app:showAsAction="always" />
+    <item
+            android:id="@+id/action_favorite"
+            android:icon="@drawable/ic_favorite_white_24dp"
+            android:orderInCategory="100"
+            android:iconTint="@color/white"
+            android:title=""
             app:showAsAction="always" />
 </menu>

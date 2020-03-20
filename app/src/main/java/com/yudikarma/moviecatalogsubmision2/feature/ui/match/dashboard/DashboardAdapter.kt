@@ -4,9 +4,10 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.yudikarma.moviecatalogsubmision2.feature.ui.match.favoriteMatch.FavoriteMatchFragment
-import com.yudikarma.moviecatalogsubmision2.feature.ui.match.lastMatch.ListLastMatchFragment
-import com.yudikarma.moviecatalogsubmision2.feature.ui.match.nextMatch.ListNextMatchFragment
+import com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.favorite.favoriteMatch.FavoriteMatchFragment
+import com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.lastMatch.ListLastMatchFragment
+import com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.nextMatch.ListNextMatchFragment
+import com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.team.TeamFragment
 
 class DashboardAdapter internal constructor(fm: FragmentManager, val context: Context):
     FragmentStatePagerAdapter(fm){
@@ -14,7 +15,7 @@ class DashboardAdapter internal constructor(fm: FragmentManager, val context: Co
     private val pages = listOf<Fragment>(
         ListLastMatchFragment(),
         ListNextMatchFragment(),
-        FavoriteMatchFragment()
+        TeamFragment()
     )
 
     override fun getItem(position: Int): Fragment = pages[position]
@@ -25,7 +26,7 @@ class DashboardAdapter internal constructor(fm: FragmentManager, val context: Co
         return when(position){
             0 -> "Last Match"
             1 -> "Next Match"
-            else -> "Favorite Match"
+            else -> "TEAM"
         }
     }
 }

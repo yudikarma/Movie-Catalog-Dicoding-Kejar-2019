@@ -2,29 +2,16 @@ package com.yudikarma.moviecatalogsubmision2.feature.ui.match
 
 import android.content.Context
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.miguelcatalan.materialsearchview.MaterialSearchView
 import com.yudikarma.moviecatalogsubmision2.R
-import com.yudikarma.moviecatalogsubmision2.data.network.Status
 import com.yudikarma.moviecatalogsubmision2.data.network.model.EventsItem
-import com.yudikarma.moviecatalogsubmision2.data.network.model.EventsItemMatchByName
 import com.yudikarma.moviecatalogsubmision2.feature.base.BaseActivity
 import com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.DashboardFragment
-import com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.DashboardFragmentDirections
-import com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.SearchMatchRvAdapter
-import dagger.android.support.DaggerAppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.toast
 
 
 class MainActivity : BaseActivity()  {

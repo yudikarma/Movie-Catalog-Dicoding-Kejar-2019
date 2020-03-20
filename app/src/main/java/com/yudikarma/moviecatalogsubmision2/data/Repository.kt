@@ -101,6 +101,9 @@ class Repository(private val apiHelper: ApiHelper,
 
     fun getTeamInfo(id: String) = apiHelper.getDetailTeamInfo(id)
 
+    fun getAllTeamInLiga(ligaName:String) = apiHelper.getAllTeamInLiga(ligaName)
+    fun getTeamByName(teamName:String) = apiHelper.getTeamByName(teamName)
+
     fun getListFavoriteMatch():List<Favorite>{
         var resultList = emptyList<Favorite>()
         try {

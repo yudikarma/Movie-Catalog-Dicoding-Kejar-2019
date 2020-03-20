@@ -73,5 +73,17 @@ interface ApiNetwork {
         @Query("id") id:String
     ):Deferred<Response<TeamDetailModel>>
 
+    //get all team in lifa
+    @GET("https://www.thesportsdb.com/api/v1/json/1/search_all_teams.php?")
+    fun getAllTeamInLIga(
+        @Query("i")ligaName:String
+    ):Deferred<Response<TeamModel>>
+
+    @GET("https://www.thesportsdb.com/api/v1/json/1/searchteams.php?")
+    fun getTeamInByName(
+        @Query("t")teamName:String
+    ):Deferred<Response<TeamModel>>
+
+
 
 }

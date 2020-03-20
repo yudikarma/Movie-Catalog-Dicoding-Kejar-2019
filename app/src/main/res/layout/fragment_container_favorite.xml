@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".feature.ui.match.dashboard.favorite.ContainerFavoriteFragment">
+
+    <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tablayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/container_about_league"
+            app:tabGravity="fill"
+            app:tabMaxWidth="0dp"
+            android:visibility="visible"
+            app:tabMode="fixed"
+            tools:ignore="MissingConstraints">
+
+        <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabs_my_zona"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Favorite Team"
+                android:textAlignment="center" />
+
+        <com.google.android.material.tabs.TabItem
+                android:id="@+id/global_zona"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:text="Favorite Match"
+                android:textAlignment="center" />
+
+    </com.google.android.material.tabs.TabLayout>
+    <androidx.viewpager.widget.ViewPager android:layout_width="match_parent"
+            android:id="@+id/viewpager"
+            android:layout_height="0dp"
+            android:visibility="visible"
+            app:layout_constraintTop_toBottomOf="@+id/tablayout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+    </androidx.viewpager.widget.ViewPager>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

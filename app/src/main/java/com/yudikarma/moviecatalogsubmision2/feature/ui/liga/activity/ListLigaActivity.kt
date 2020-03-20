@@ -52,7 +52,7 @@ class ListLigaActivity : AppCompatActivity() {
                     height = wrapContent,
                     width = matchParent
                 )
-                layoutManager = LinearLayoutManager(context)
+                layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
                 adapter = ListLigaAdapter(league) {
                     //MainActivity.getStartedIntent(context,it.id?.toInt()?:4328)
                     LigaDetailActivity.getStartedIntent(context,it)

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".feature.ui.match.dashboard.search.team.SearchTeamFragment">
+
+    <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_search_black_24dp"
+            android:drawablePadding="16dp"
+            android:hint="Search Team"
+            tools:ignore="MissingConstraints" />
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/container_shimmer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:elevation="1dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputEditText">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <include layout="@layout/item_list_team_shimmer"></include>
+
+            <include layout="@layout/item_list_team_shimmer"></include>
+
+            <include layout="@layout/item_list_team_shimmer"></include>
+
+            <include layout="@layout/item_list_team_shimmer"></include>
+
+            <include layout="@layout/item_list_team_shimmer"></include>
+
+            <include layout="@layout/item_list_team_shimmer"></include>
+
+            <include layout="@layout/item_list_team_shimmer"></include>
+
+            <include layout="@layout/item_list_team_shimmer"></include>
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_team"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputEditText" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/no_data_"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/not_found_movie"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
+            tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

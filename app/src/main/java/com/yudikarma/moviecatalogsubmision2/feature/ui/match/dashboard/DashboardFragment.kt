@@ -5,11 +5,8 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.miguelcatalan.materialsearchview.MaterialSearchView
 
@@ -20,33 +17,14 @@ import com.yudikarma.moviecatalogsubmision2.data.network.model.EventsItemMatchBy
 import com.yudikarma.moviecatalogsubmision2.data.network.model.LeaguesItem
 import com.yudikarma.moviecatalogsubmision2.feature.base.BaseFragment
 import com.yudikarma.moviecatalogsubmision2.feature.ui.match.MainActivity
-import com.yudikarma.moviecatalogsubmision2.utils.EspressoIdlingResource
+import com.yudikarma.moviecatalogsubmision2.feature.ui.match.dashboard.search.match.SearchMatchRvAdapter
 import com.yudikarma.moviecatalogsubmision2.utils.afterTextChangedDelayed
 import com.yudikarma.moviecatalogsubmision2.utils.loadImage
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import org.jetbrains.anko.support.v4.toast
-import org.jetbrains.anko.toast
 
 
-class DashboardFragment : BaseFragment() , MaterialSearchView.OnQueryTextListener,
-SearchMatchRvAdapter.Interaction,
-MaterialSearchView.SearchViewListener {
-
-    override fun onSearchViewClosed() {
-        visibleFragment()
-    }
-
-    override fun onSearchViewShown() {
-        visibleRvView()
-
-    }
-
-    private val rvAdapter: SearchMatchRvAdapter by lazy {
-        SearchMatchRvAdapter(
-            this
-        )
-    }
-
+class DashboardFragment : BaseFragment() {
 
 
     companion object{
@@ -65,10 +43,6 @@ MaterialSearchView.SearchViewListener {
         }
 
 
-
-
-
-
     }
 
     override fun setupViewModel() {
@@ -81,30 +55,15 @@ MaterialSearchView.SearchViewListener {
             }
         })
 
-        dashboardViewModel.dataMatchByName.observe(this,androidx.lifecycle.Observer {
-            if (it.events?.size ?: 0 > 0){
-
-                val list = ArrayList<EventsItemMatchByName>()
-                it.events?.forEach {
-                    if (it.strSport.equals("Soccer")){
-                        list.add(it)
-                    }
-                }
-                rvAdapter.submitList(list)
-                visibleRvView()
-            }else{
-                visibleNoData()
-            }
-        })
 
         dashboardViewModel.networkState.observe(this, androidx.lifecycle.Observer {
             if (it.status == Status.FAILED){
                 toast("${it.msg}")
             }
             if (it.status == Status.RUNNING){
-                visibleShimmer()
+                //visibleShimmer()
             } else {
-                unvVisibleShimmer()
+                //unvVisibleShimmer()
 
             }
 
@@ -154,14 +113,6 @@ MaterialSearchView.SearchViewListener {
 
         setSupportActionbar()
 
-        setupSeachView()
-
-        //setupRvAdapter
-        with(recycler_view){
-            layoutManager = LinearLayoutManager(context  )
-            adapter = rvAdapter
-        }
-
 
 
         with(viewpager){
@@ -171,9 +122,6 @@ MaterialSearchView.SearchViewListener {
             setupWithViewPager(viewpager)
         }
 
-        search_view.afterTextChangedDelayed{
-            dashboardViewModel.getMatchByName(it)
-        }
 
 
       if (savedInstanceState == null){
@@ -188,13 +136,7 @@ MaterialSearchView.SearchViewListener {
         (activity as MainActivity).setSupportActionBar(toolbar)
         toolbar.inflateMenu(R.menu.menus)
     }
-    private fun setupSeachView() {
-        //search_view.setVoiceSearch(false)
-        //search_view.setEllipsize(true)
-        //search_view.setOnQueryTextListener(this)
-        //search_view.setOnSearchViewListener(this)
 
-    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menus,menu)
@@ -207,6 +149,15 @@ MaterialSearchView.SearchViewListener {
         when(item?.itemId){
 
             R.id.action_search -> {
+                if (viewpager.currentItem == 0 || viewpager.currentItem == 1){
+                    DashboardFragmentDirections.actionActionMovieToSearchMatchFragment()
+                }else{
+                    DashboardFragmentDirections.actionActionMovieToSearchTeamFragment()
+                }
+                return true
+            }
+            R.id.action_favorite ->{
+                DashboardFragmentDirections.actionActionMovieToContainerFavoriteFragment()
                 return true
             }
             else -> {
@@ -214,88 +165,7 @@ MaterialSearchView.SearchViewListener {
             }
         }
     }
-    override fun onQueryTextSubmit(query: String?): Boolean {
-        query?.let {
-            getMatchByName(it)
-        }
 
-        return true
-    }
-
-
-
-    override fun onQueryTextChange(newText: String?): Boolean {
-
-        return true
-    }
-
-
-    private fun getMatchByName(keyword:String){
-        dashboardViewModel.getMatchByName(keyword)
-
-
-    }
-
-
-
-
-    private fun unvVisibleShimmer() {
-        container_shimmer.visibility = View.GONE
-    }
-
-    private fun visibleShimmer() {
-        container_shimmer.visibility = View.VISIBLE
-        unVisibeNoData()
-        unVisibleRvView()
-        //unVisibleFragment()
-    }
-
-    private fun visibleNoData(){
-        no_data_.visibility = View.VISIBLE
-        unvVisibleShimmer()
-        unVisibleRvView()
-        unVisibleFragment()
-    }
-
-    private fun unVisibeNoData(){
-        no_data_.visibility = View.GONE
-    }
-
-    private fun visibleRvView(){
-        recycler_view.visibility = View.VISIBLE
-        unVisibleFragment()
-        unvVisibleShimmer()
-        unVisibeNoData()
-    }
-
-    private fun unVisibleRvView(){
-        recycler_view.visibility = View.GONE
-    }
-
-    private fun visibleFragment(){
-        unVisibleRvView()
-        unVisibeNoData()
-        unvVisibleShimmer()
-
-        container_about_league.visibility = View.VISIBLE
-        tablayout.visibility = View.VISIBLE
-        viewpager.visibility = View.VISIBLE
-
-    }
-    private fun unVisibleFragment(){
-        container_about_league.visibility = View.GONE
-        tablayout.visibility = View.GONE
-        viewpager.visibility = View.GONE
-    }
-
-    override fun onItemSelected(position: Int, item: EventsItemMatchByName,view: View) {
-        val action = DashboardFragmentDirections.actionFragmentListMovieToDetailMovieFragment(
-            EventsItem(),item)
-
-        Navigation.findNavController(view).navigate(action)
-
-
-    }
 
 
 

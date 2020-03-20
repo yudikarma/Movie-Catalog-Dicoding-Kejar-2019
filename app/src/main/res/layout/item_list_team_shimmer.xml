@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        app:cardBackgroundColor="@color/grey_100"
+        android:layout_width="match_parent"
+        app:cardCornerRadius="14dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:cardElevation="4dp"
+        app:contentPadding="4dp"
+        android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:paddingBottom="4dp"
+            android:layout_height="wrap_content">
+        <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:id="@+id/container_ic"
+                android:layout_marginStart="8dp"
+                app:cardCornerRadius="12dp"
+                android:minWidth="64dp"
+                android:minHeight="64dp"
+                app:cardBackgroundColor="@color/grey_300"
+                app:layout_constraintBottom_toBottomOf="@+id/desc_task"
+                app:layout_constraintDimensionRatio="H,1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/title_task"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ic_task"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center"
+                    tools:ignore="MissingConstraints" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_task"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:maxLines="1"
+                android:layout_marginEnd="8dp"
+                android:background="@color/grey_300"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/container_ic"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/date_task"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@color/grey_300"
+                android:layout_marginTop="4dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+
+                app:layout_constraintEnd_toStartOf="@+id/time_task"
+                app:layout_constraintStart_toEndOf="@+id/container_ic"
+                app:layout_constraintTop_toBottomOf="@+id/title_task"
+                tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/time_task"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/grey_300"
+                android:layout_marginEnd="8dp"
+                android:padding="8dp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/date_task"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/desc_task"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:maxLines="2"
+                android:background="@color/grey_300"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/container_ic"
+                app:layout_constraintTop_toBottomOf="@+id/date_task"
+                tools:ignore="MissingConstraints" />
+
+        <View
+                android:layout_width="140dp"
+                android:layout_height="35dp"
+                android:id="@+id/btn_status"
+                android:textAllCaps="true"
+                android:layout_marginTop="8dp"
+                android:background="@color/grey_300"
+                android:layout_marginEnd="8dp"
+                android:textColor="@color/white"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/desc_task" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
