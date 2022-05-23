@@ -124,13 +124,4 @@ class AppModule {
     @Singleton
     internal fun providePrefHelper(appPreferenceHelper: AppPreferenceHelper): PreferenceHelper = appPreferenceHelper
 
-
-
-
-
-
-
-
-
-
 }

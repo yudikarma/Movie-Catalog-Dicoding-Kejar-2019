@@ -10,37 +10,32 @@ import retrofit2.http.*
 interface ApiNetwork {
 
     //getListMovies
-    @FormUrlEncoded
-    @POST("movie")
-    fun getListMovies(@Field("api_key")api_key:String?,
-                      @Field("language")language:String?):Deferred<Response<Movie>>
+    @GET("movie/popular")
+    fun getListMovies(@Query("api_key")api_key:String?,
+                      @Query("language")language:String?):Deferred<Response<Movie>>
 
     //getListTVShow
-    @FormUrlEncoded
-    @POST("tv")
-    fun getListTVShow(@Field("api_key")api_key:String?,
-                      @Field("language")language:String?):Deferred<Response<TvShow>>
+    @GET("tv/popular")
+    fun getListTVShow(@Query("api_key")api_key:String?,
+                      @Query("language")language:String?):Deferred<Response<TvShow>>
 
     //search movie
-    @FormUrlEncoded
-    @POST("https://api.themoviedb.org/3/search/movie")
-    fun searchMovie(@Field("api_key")api_key:String?,
-                    @Field("language")language:String?,
-                    @Field("query")query:String?):Deferred<Response<Movie>>
+    @GET("search/movie")
+    fun searchMovie(@Query("api_key")api_key:String?,
+                    @Query("language")language:String?,
+                    @Query("query")query:String?):Deferred<Response<Movie>>
 
     //search tvshow
-    @FormUrlEncoded
-    @POST("https://api.themoviedb.org/3/search/tv")
-    fun searchTvShow(@Field("api_key")api_key:String?,
-                    @Field("language")language:String?,
-                    @Field("query")query:String?):Deferred<Response<TvShow>>
+    @GET("search/tv")
+    fun searchTvShow(@Query("api_key")api_key:String?,
+                    @Query("language")language:String?,
+                    @Query("query")query:String?):Deferred<Response<TvShow>>
 
     //movie Upcoming
-    @FormUrlEncoded
-    @POST("https://api.themoviedb.org/3/movie/upcoming")
+    @GET("movie/upcoming")
     fun listMovieUpcoming(
-        @Field("api_key")api_key:String?,
-        @Field("language")language:String?
+        @Query("api_key")api_key:String?,
+        @Query("language")language:String?
     ):Deferred<Response<MovieUpcoming>>
 
 

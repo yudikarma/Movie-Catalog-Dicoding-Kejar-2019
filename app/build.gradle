@@ -13,7 +13,6 @@ android {
     defaultConfig {
         applicationId "com.yudikarma.moviecatalogsubmision2"
         minSdkVersion 22
-        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -27,7 +26,7 @@ android {
         }
         debug {
             minifyEnabled false
-            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/discover/\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
             buildConfigField("String", "IMG_POST_URL", "\"files/images/post/\"")
             buildConfigField("String", "IMG_PROFILE_URL", "\"files/images/profile/\"")
             buildConfigField("String", "API_KEY", "\"43de652904b9990f77c64ef4301dedb9\"")
@@ -36,6 +35,7 @@ android {
         }
 
     }
+
     dataBinding {
         enabled = true
     }
